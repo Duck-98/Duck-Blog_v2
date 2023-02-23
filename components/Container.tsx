@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import Nav from './Nav';
 import styled from 'styled-components';
 import Image from 'next/image';
+import metadata from '../data/metadata';
 // import Image from './atoms/Image';
 
 const Container = (props: { children: React.ReactNode }) => {
@@ -14,19 +15,23 @@ const Container = (props: { children: React.ReactNode }) => {
         </Head>
         <Header>
           <div className="img-con">
-            {/* <Image src="/home.jpg" alt="logo" autoSize={false} width={40} height={40} /> */}
-            {/* <Image src={`/home.jpg`} alt="대표 이미지" width="100%" height={45} /> */}
-            <span className=""></span>
+            <Image src="/home.jpg" alt="Image description" width={40} height={40} />
+            <span className="title">{metadata.title}</span>
           </div>
           <Nav />
-          <main>{props.children}</main>
         </Header>
+        <Main>{props.children}</Main>
       </Div>
     </>
   );
 };
 
 export default Container;
+
+const Main = styled.main`
+  width: 100%;
+  max-width: 48rem;
+`;
 
 const Div = styled.div`
   display: flex;
@@ -38,6 +43,12 @@ const Div = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    border-radius: 100%;
+    .title {
+      padding-left: 0.75rem;
+    }
+  }
+  .con {
     border-radius: 100%;
   }
 `;
