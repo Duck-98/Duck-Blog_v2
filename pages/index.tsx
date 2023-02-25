@@ -5,26 +5,41 @@ import styled from 'styled-components';
 import metadata from '../data/metadata';
 // import Image from 'next/image';
 import Image from '../components/atoms/Image';
+import { WiDaySunny } from 'react-icons/wi';
+import { MdOutlineModeNight } from 'react-icons/md';
+import { lightTheme } from '../styles/theme';
 
-const Home = () => {
+const Home = ({ toggleTheme, theme }) => {
   return (
-    <Container>
+    <>
       <Div>
+        {theme === lightTheme ? (
+          <Button onClick={toggleTheme}>
+            <WiDaySunny />
+          </Button>
+        ) : (
+          <Button onClick={toggleTheme}>
+            <Night />
+          </Button>
+        )}
         <div className="img-con">
-          {/* <Image src="/blog.jpg" alt="Image description"  height={40} /> */}
           <Image src="/blog.jpg" alt="blog-img" autoSize={false} width={768} height={600} />
           <span className="title">{metadata.title}</span>
         </div>
         <RecentPosts />
       </Div>
-    </Container>
+    </>
   );
 };
 
 export default Home;
-
+const Button = styled.button`
+  position: relative;
+  bottom: 45px;
+  left: 580px;
+  font-size: 40px;
+`;
 const Div = styled.div`
-  margin-top: 1.25rem;
   width: 100%;
   .img-con {
     position: relative;
@@ -43,4 +58,8 @@ const Div = styled.div`
       filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
     }
   }
+`;
+
+const Night = styled(MdOutlineModeNight)`
+  color: white;
 `;
