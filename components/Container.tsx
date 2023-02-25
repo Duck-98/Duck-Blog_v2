@@ -14,7 +14,6 @@ const Container = (props: { children: React.ReactNode }) => {
         </Head>
         <Header>
           <div className="img-con">
-            {/* <Image src="/home.jpg" alt="Image description" width={40} height={40} /> */}
             <Image src="/home.jpg" alt="blog-img" autoSize={false} width={50} height={50} />
             <span className="title">{metadata.title}</span>
           </div>
