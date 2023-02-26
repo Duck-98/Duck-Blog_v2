@@ -5,17 +5,27 @@ import styled from 'styled-components';
 import metadata from '../data/metadata';
 import Image from './atoms/Image';
 
-const Container = (props: { children: React.ReactNode }) => {
+const Container = (props) => {
+  const meta = {
+    title: metadata.title,
+    description: metadata.description,
+    author: metadata.author,
+    ...props.customMeta,
+  };
   return (
     <>
       <Div>
         <Head>
-          <title>Duck 블로그</title>
+          <title>{meta.title}</title>
+          <title>{meta.title}</title>
+          <meta content={meta.description} name="description" />
+          <meta property="og:site_name" content={meta.author} />
         </Head>
         <Header>
           <div className="img-con">
             <Image src="/home.jpg" alt="blog-img" autoSize={false} width={50} height={50} />
             <span className="title">{metadata.title}</span>
+            {/* <button onClick={toggleTheme}>change</button> */}
           </div>
           <Nav />
         </Header>
