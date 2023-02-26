@@ -1,10 +1,20 @@
 import BlogPost from '../components/\bBlogPost';
-import Container from '../components/Container';
+import { InferGetStaticPropsType } from 'next';
+
 import styled from 'styled-components';
 import { WiDaySunny } from 'react-icons/wi';
 import { MdOutlineModeNight } from 'react-icons/md';
 import { lightTheme } from '../styles/theme';
-const Blog = ({ toggleTheme, theme }) => {
+import { ThemeProp } from 'types/type';
+import { allPosts } from 'contentlayer/generated';
+
+interface Props {
+  toggleTheme: () => void;
+  theme: ThemeProp;
+  posts: InferGetStaticPropsType<typeof getStaticProps>[];
+}
+
+const Blog = ({ toggleTheme, theme, posts }: Props) => {
   return (
     <>
       <BtnWrapper>
@@ -19,12 +29,28 @@ const Blog = ({ toggleTheme, theme }) => {
         )}
       </BtnWrapper>
       <Div>
-        <BlogPost />
-        <BlogPost />
-        <BlogPost />
+        {posts.map((post) => (
+          <BlogPost
+            date={post.date}
+            title={post.title}
+            des={post.description}
+            slug={post._raw.flattenedPath}
+            key={post._id}
+          />
+        ))}
       </Div>
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  const posts = allPosts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+
+  return {
+    props: {
+      posts,
+    },
+  };
 };
 
 const Div = styled.div`
