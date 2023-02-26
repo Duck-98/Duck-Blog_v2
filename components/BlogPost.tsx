@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const BlogPost = () => {
+const BlogPost = ({ date, title, des, slug }) => {
   return (
-    <CustomLink href="/blog" passHref>
-      <div className="day">2022.02.10</div>
-      <div className="title">💙 게시물 제목이 나타납니다.</div>
-      <div className="content">게시물 설명이 나타납니다.</div>
+    <CustomLink href={`/blog/${slug}`} passHref>
+      <div className="day">{date}</div>
+      <div className="title">{title}</div>
+      <div className="content">{des}</div>
     </CustomLink>
   );
 };
