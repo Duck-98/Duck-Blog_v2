@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rimraf public/robots.txt public/sitemap*.xml & next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -26,6 +26,7 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
+    "next-sitemap": "^3.1.54",
     "typescript": "4.9.5"
   }
 }
