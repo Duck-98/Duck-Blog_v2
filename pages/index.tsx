@@ -8,8 +8,17 @@ import Image from '../components/atoms/Image';
 import { WiDaySunny } from 'react-icons/wi';
 import { MdOutlineModeNight } from 'react-icons/md';
 import { lightTheme } from '../styles/theme';
+import { allPosts } from 'contentlayer/generated';
+import { InferGetStaticPropsType } from 'next';
+import { ThemeProp } from 'types/type';
 
-const Home = ({ toggleTheme, theme }) => {
+interface Props {
+  toggleTheme: () => void;
+  theme: ThemeProp;
+  posts: InferGetStaticPropsType<typeof getStaticProps>[];
+}
+
+const Home = ({ toggleTheme, theme, posts }: Props) => {
   return (
     <>
       <Div>
@@ -26,10 +35,19 @@ const Home = ({ toggleTheme, theme }) => {
           <Image src="/blog.jpg" alt="blog-img" autoSize={false} width={768} height={600} />
           <span className="title">{metadata.title}</span>
         </div>
-        <RecentPosts />
+        <RecentPosts posts={posts} />
       </Div>
     </>
   );
+};
+
+export const getStaticProps = async () => {
+  const posts = allPosts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+  return {
+    props: {
+      posts,
+    },
+  };
 };
 
 export default Home;

@@ -1,19 +1,19 @@
+import { allPosts } from 'contentlayer/generated';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const RecentPosts = () => {
+const RecentPosts = ({ posts }) => {
+  console.log(posts, 'posts');
   return (
     <Section>
       <h1>최근 게시물</h1>
       <div className="content-con">
-        <Link href="/" passHref className="link">
-          <Title>게시물 제목</Title>
-          <div className="content">게시물설명</div>
-        </Link>
-        <Link href="/" passHref className="link">
-          <Title>hello</Title>
-          <div>안녕하세요</div>
-        </Link>
+        {posts.slice(0, 5).map((post) => (
+          <Link key={post._id} href={`/blog/${post._raw.flattenedPath}`} passHref className="link">
+            <Title>{post.title}</Title>
+            <div className="content">{post.description}</div>
+          </Link>
+        ))}
       </div>
     </Section>
   );
