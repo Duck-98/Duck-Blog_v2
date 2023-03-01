@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import '../styles/globals.css'
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../styles/theme';
@@ -11,12 +10,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const toggleTheme = () => {
     setTheme(theme === lightTheme ? darkTheme : lightTheme);
+    localStorage.setItem('theme', JSON.stringify(theme));
   };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Container>
+      <Container toggleTheme={toggleTheme}>
         <Component {...pageProps} toggleTheme={toggleTheme} theme={theme} />
       </Container>
     </ThemeProvider>

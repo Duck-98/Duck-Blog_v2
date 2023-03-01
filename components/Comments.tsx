@@ -1,31 +1,35 @@
-// Comments.tsx
-import { useEffect, useRef } from 'react';
-import { lightTheme } from 'styles/theme';
+import React, { useEffect, useState } from 'react';
 
-const Comments = ({ theme }) => {
-  const commentsRef = useRef<HTMLElement | null>(null);
-
-  // 아래 코드는 다크모드 적용을 위한 내용이기에 생략해도 무관하다.
-  //   const { theme, systemTheme } = useTheme();
-  console.log(theme);
-  const commentsTheme = theme === lightTheme ? 'light' : 'dark';
+const Comments = () => {
+  const [current, setCurrent] = useState<string>('');
 
   useEffect(() => {
-    const commentsEl = commentsRef.current?.firstChild;
-    if (commentsEl) commentsRef.current?.removeChild(commentsEl);
-    const scriptEl = document.createElement('script');
-    scriptEl.src = 'https://utteranc.es/client.js';
-    scriptEl.async = true;
-    scriptEl.crossOrigin = 'anonymous';
-    scriptEl.setAttribute('repo', 'Duck-98/duck-blog-comment');
-    scriptEl.setAttribute('issue-term', 'pathname');
-    scriptEl.setAttribute('theme', `github-${commentsTheme}`);
-    scriptEl.setAttribute('label', '💬 Discussion');
+    const item = localStorage.getItem('theme');
+    if (JSON.parse(item).bgColor === '#060606') {
+      setCurrent('light');
+    } else {
+      setCurrent('dark');
+    }
+  }, []);
 
-    commentsRef.current?.appendChild(scriptEl);
-  }, [commentsTheme]);
-
-  return <section ref={commentsRef} />;
+  return (
+    <section
+      ref={(elem) => {
+        if (!elem) {
+          return;
+        }
+        const scriptElem = document.createElement('script');
+        scriptElem.src = 'https://utteranc.es/client.js';
+        scriptElem.async = true;
+        scriptElem.setAttribute('repo', 'Duck-98/duck-blog-comment');
+        scriptElem.setAttribute('issue-term', 'title');
+        scriptElem.setAttribute('theme', `github-${current}`);
+        scriptElem.setAttribute('label', 'blog-comment');
+        scriptElem.crossOrigin = 'anonymous';
+        elem.appendChild(scriptElem);
+      }}
+    />
+  );
 };
 
 export default Comments;

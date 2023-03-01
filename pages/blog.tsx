@@ -14,7 +14,7 @@ interface Props {
   posts: InferGetStaticPropsType<typeof getStaticProps>[];
 }
 
-const Blog = ({ toggleTheme, theme, posts }: Props) => {
+const Blog = ({ toggleTheme, posts, theme }: Props) => {
   return (
     <>
       <BtnWrapper>
