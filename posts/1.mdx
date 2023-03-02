@@ -1,11 +1,95 @@
 ---
-title: Test 글입니다.
-date: 2023-02-26
-description: 테스트글 설명란입니다.
+title: 큐(Queue)란?
+date: 2022-03-10
+description: 큐 알고리즘에 대한 글입니다!
 ---
 
-### 제목
+## 큐(Queue)란?
 
-- 내용 1
-- 내용 2
-- 내용 3
+- FIFO(first in first out) 먼저 들어온 데이터가 먼저 나간다.
+- 데이터 삽입 (Enqueue)
+- 데이터 삭제 (Dequeue)
+- 큐는 순서대로 처리해야하는 작업을 임시로 저장해두는 버퍼로서 많이 사용된다.
+
+#### 예시]
+
+1. 너비 우선 탐색(BFS, Breadth-First Search) 구현
+2. 처리해야 할 노드의 리스트를 저장하는 용도로 큐(Queue)를 사용한다.
+3. 캐시(Cache) 구현
+4. 프린트 대기열
+5. 선입선출이 필요한 대기열
+6. 콜센터 고객 대기시간
+7. 프린터의 출력 처리
+8. 윈도 시스템의 메시지 처리기
+9. 프로세스 관리
+
+![](https://velog.velcdn.com/images/dduck/post/f900d477-3bef-438b-a56a-4766255e3768/image.png)
+
+### 배열 큐
+
+```js
+class ArrayQueue {
+  constructor() {
+    this.queue = [];
+    this.front = 0; // 맨 앞
+    this.rear = 0; // 맨 뒤
+  }
+
+  enqueue(value) {
+    // 큐에 맨 뒷부분에 값 추가
+    this.queue[this.rear++] = value;
+  }
+
+  dequeue() {
+    // 큐에 맨 앞부분을 추출 후 삭제
+    const value = this.queue[this.front]; // 큐에 맨 앞 부분 찾기
+    delete this.queue[this.front]; // value(맨 앞 부분) 삭제
+    this.front += 1; // 맨 앞부분 index가 삭제됐기 때문에 다음 순서로 front를 옮겨줌
+    return value;
+  }
+  peek() {
+    // 맨 앞 부분 값 불러오기
+    return this.queue[this.front];
+  }
+
+  size() {
+    // 큐 사이즈 불러오기
+    return this.rear - this.front;
+  }
+}
+```
+
+### 연결리스트 큐
+
+```js
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+  enqueue(newValue) {
+    const newNode = new Node(newValue);
+    if (this.head === null) {
+      this.head = this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+  }
+  dequeue() {
+    const value = this.head.value;
+    this.head = this.head.next;
+    return value;
+  }
+  peek() {
+    return this.head.value;
+  }
+}
+```
