@@ -31,6 +31,10 @@ const Section = styled.section`
   .content-con {
     display: flex;
     flex-direction: column;
+    color: #aab0ba;
+    font-weight: 500;
+    font-size: 1rem; /* 24px */
+    margin-top: 0.25rem; /* 4px */
   }
   .link {
     margin-top: 1.25rem;
@@ -38,7 +42,9 @@ const Section = styled.section`
 `;
 
 const Title = styled.div`
-  font-size: medium;
+  font-weight: bolder;
+  font-size: 1.5rem; /* 24px */
+  margin-top: 0.5rem; /* 8px */
 `;
 
 const Content = styled.div``;
