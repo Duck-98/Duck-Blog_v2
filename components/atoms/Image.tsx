@@ -36,6 +36,7 @@ function Image({ src, alt, width, height, autoSize, ...rest }: Props) {
 const Wrapper = styled.div<Pick<Props, 'autoSize'>>`
   display: flex;
   justify-content: center;
+
   ${({ autoSize }) =>
     autoSize &&
     css`
@@ -55,6 +56,10 @@ const Wrapper = styled.div<Pick<Props, 'autoSize'>>`
 const TransitionImage = styled(NextImage)`
   transition: 0.2s;
   border-radius: 24px;
+  @media only screen and (max-width: 390px) {
+    width: 390px;
+    height: 280px;
+  }
 `;
 
 export default Image;

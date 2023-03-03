@@ -112,10 +112,13 @@ const Wrapper = styled.div`
     width: 275px;
   }
   img {
+    @media only screen and (max-width: 390px) {
+      width: 350px;
+    }
     width: 728px;
   }
   pre {
-    background: ${({ theme }: { theme: any }) => theme.codeColor};
+    background: ${({ theme }: { theme: any }) => theme.grayColor};
   }
 `;
 

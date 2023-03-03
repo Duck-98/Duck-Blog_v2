@@ -23,6 +23,7 @@ export default RecentPosts;
 
 const Section = styled.section`
   margin-top: 2.5rem;
+  margin-bottom: 5rem;
   h1 {
     font-size: 1.875rem; /* 30px */
     line-height: 2.25rem; /* 36px */

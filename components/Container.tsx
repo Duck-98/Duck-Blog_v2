@@ -3,7 +3,8 @@ import React from 'react';
 import Nav from './Nav';
 import styled from 'styled-components';
 import metadata from '../data/metadata';
-import Image from './atoms/Image';
+// import Image from './atoms/Image';
+import Image from 'next/image';
 
 const Container = (props) => {
   const meta = {
@@ -23,9 +24,10 @@ const Container = (props) => {
         </Head>
         <Header>
           <div className="img-con">
-            <Image src="/home.jpg" alt="blog-img" autoSize={false} width={50} height={50} />
+            <Image className="img" src="/home.jpg" alt="blog-img" width={50} height={50} />
             <span className="title">{metadata.title}</span>
           </div>
+
           <Nav />
         </Header>
         <Main>{props.children}</Main>
@@ -51,7 +53,9 @@ const Div = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-radius: 100%;
+    .img {
+      border-radius: 100%;
+    }
     .title {
       padding-left: 0.75rem;
     }
