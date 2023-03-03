@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import Nav from './Nav';
 import styled from 'styled-components';
-import metadata from '../src/data/metadata';
+import metadata from '../data/metadata';
 import Image from './atoms/Image';
 
 const Container = (props) => {

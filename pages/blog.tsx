@@ -1,12 +1,11 @@
-import BlogPost from '../components/\bBlogPost';
-import { InferGetStaticPropsType } from 'next';
-
 import styled from 'styled-components';
 import { WiDaySunny } from 'react-icons/wi';
 import { MdOutlineModeNight } from 'react-icons/md';
-import { lightTheme } from '../styles/theme';
-import { PostProp, ThemeProp } from 'types/type';
 import { allPosts } from 'contentlayer/generated';
+
+import { lightTheme } from 'styles/theme';
+import { ThemeProp, PostProp } from 'types/type';
+import BlogPost from 'components/\bBlogPost';
 
 interface Props {
   toggleTheme: () => void;

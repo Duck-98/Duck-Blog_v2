@@ -1,4 +1,4 @@
-import navlinks from '../src/data/navlinks';
+import navlinks from '../data/navlinks';
 import Link from 'next/link';
 import styled from 'styled-components';
 

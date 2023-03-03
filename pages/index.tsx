@@ -1,13 +1,11 @@
 import React from 'react';
-import Container from '../components/Container';
-import RecentPosts from '../components/RecentPosts';
+import RecentPosts from 'components/RecentPosts';
 import styled from 'styled-components';
 import metadata from '../data/metadata';
-// import Image from 'next/image';
-import Image from '../components/atoms/Image';
+import Image from 'components/atoms/Image';
 import { WiDaySunny } from 'react-icons/wi';
 import { MdOutlineModeNight } from 'react-icons/md';
-import { lightTheme } from '../styles/theme';
+import { lightTheme } from 'styles/theme';
 import { allPosts } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
 import { ThemeProp } from 'types/type';
