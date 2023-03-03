@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Nav from './Nav';
 import styled from 'styled-components';
-import metadata from '../data/metadata';
+import metadata from '../src/data/metadata';
 import Image from './atoms/Image';
 
 const Container = (props) => {
@@ -25,7 +25,6 @@ const Container = (props) => {
           <div className="img-con">
             <Image src="/home.jpg" alt="blog-img" autoSize={false} width={50} height={50} />
             <span className="title">{metadata.title}</span>
-            {/* <button onClick={toggleTheme}>change</button> */}
           </div>
           <Nav />
         </Header>

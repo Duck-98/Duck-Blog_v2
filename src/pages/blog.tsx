@@ -5,13 +5,13 @@ import styled from 'styled-components';
 import { WiDaySunny } from 'react-icons/wi';
 import { MdOutlineModeNight } from 'react-icons/md';
 import { lightTheme } from '../styles/theme';
-import { ThemeProp } from 'types/type';
+import { PostProp, ThemeProp } from 'types/type';
 import { allPosts } from 'contentlayer/generated';
 
 interface Props {
   toggleTheme: () => void;
   theme: ThemeProp;
-  posts: InferGetStaticPropsType<typeof getStaticProps>[];
+  posts: PostProp[];
 }
 
 const Blog = ({ toggleTheme, posts, theme }: Props) => {
