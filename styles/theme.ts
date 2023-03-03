@@ -3,7 +3,7 @@ export const lightTheme = {
   textColor: '#000000',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
-  codeColor: '#FBFCFD',
+  grayColor: '#FBFCFD',
 };
 
 export const darkTheme = {
@@ -11,7 +11,7 @@ export const darkTheme = {
   textColor: '#FFFFFF',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
-  codeColor: '#1e1e1e',
+  grayColor: '#1e1e1e',
 };
 
 export const theme = {
