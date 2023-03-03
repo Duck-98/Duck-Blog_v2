@@ -59,11 +59,12 @@ const Div = styled.div`
 const Button = styled.button`
   position: relative;
   bottom: 45px;
-  left: 580px;
+  right: -150px;
   font-size: 40px;
 `;
 const Night = styled(MdOutlineModeNight)`
   color: white;
 `;
 const BtnWrapper = styled.div``;
+
 export default Blog;
