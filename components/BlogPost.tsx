@@ -14,6 +14,7 @@ const BlogPost = ({ date, title, des, slug }) => {
 const CustomLink = styled(Link)`
   width: 100%;
   margin-top: 1.75rem; /* 28px */
+  padding: 0.5rem;
   &:hover {
     transform: translateX(-0.375rem);
   }
