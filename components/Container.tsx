@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import metadata from '../data/metadata';
 // import Image from './atoms/Image';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Container = (props) => {
   const meta = {
@@ -24,10 +25,11 @@ const Container = (props) => {
         </Head>
         <Header>
           <div className="img-con">
-            <Image className="img" src="/home.jpg" alt="blog-img" width={50} height={50} />
+            <Link href="/">
+              <Image className="img" src="/home.jpg" alt="blog-img" width={50} height={50} />
+            </Link>
             <span className="title">{metadata.title}</span>
           </div>
-
           <Nav />
         </Header>
         <Main>{props.children}</Main>
