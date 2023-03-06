@@ -74,8 +74,9 @@ const IntroDiv = styled.div`
   align-items: center;
   .con {
     display: flex;
+    align-items: center;
     .contact-icon {
-      font-size: 20px;
+      font-size: 25px;
     }
   }
   h1 {
