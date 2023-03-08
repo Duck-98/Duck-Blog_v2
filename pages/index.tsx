@@ -132,6 +132,7 @@ const Div = styled.div`
     position: relative;
     width: 100%;
     .title {
+      padding: 0;
       position: absolute;
       font-weight: bolder;
       top: 3rem;
