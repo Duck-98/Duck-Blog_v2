@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RecentPosts from 'components/RecentPosts';
 import styled from 'styled-components';
 import metadata from '../data/metadata';
@@ -10,6 +10,7 @@ import { lightTheme } from 'styles/theme';
 import { allPosts } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
 import { ThemeProp } from 'types/type';
+import Modal from 'components/molecules/Modal';
 
 interface Props {
   toggleTheme: () => void;
@@ -18,6 +19,8 @@ interface Props {
 }
 
 const Home = ({ toggleTheme, theme, posts }: Props) => {
+  const [modalOpen, setModalOpen] = useState(true);
+
   return (
     <>
       <Div>
@@ -51,6 +54,7 @@ const Home = ({ toggleTheme, theme, posts }: Props) => {
         </IntroDiv>
         <Divider />
         <RecentPosts posts={posts} />
+        <div>{modalOpen && <Modal setModalOpen={setModalOpen} />}</div>
       </Div>
     </>
   );
@@ -113,6 +117,7 @@ const Divider = styled.div`
   background: ${({ theme }: { theme: any }) => theme.grayColor};
   width: 100%;
   height: 3px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
 `;
 
 const Button = styled.button`
