@@ -1,0 +1,188 @@
+---
+title: 아토믹 디자인 패턴을 사용해보자!
+date: 2022-03-08
+description: about Atomic design
+---
+
+## Atomic Design
+
+과거 스타트업에서 프론트엔드 개발 인턴을 했었을 당시에
+같이 일하셨던 개발자분들이 디자인 패턴에 대해서 말씀해주셨다.
+당시에 아무것도 몰랐던 초짜였기에 디자인 패턴에 대해서 잘 몰랐고
+그 때 처음으로 아토믹 디자인 패턴에 대해 알게 됐다.
+
+---
+
+### Atomic Design이란?
+
+![](../public/blog/atomic.png)
+
+React는 컴포넌트 단위로 개발을 하게 된다.
+React를 사용하여 개발을 할 때 가장 중요한 것은 "재 사용성"이다.
+아토믹 디자인 패턴은 컴포넌트를 재 사용하면서 효율적으로 만들게 해주는 디자인 패턴이다.
+
+위의 사진을 보는 것처럼
+atoms(원자)->molecules(분자)->organisms(유기체)->templates(템플릿)->page(페이지)
+순으로 컴포넌트를 만든다.
+
+#### 원자(Atoms)
+
+- 디자인과 기능의 최소 단위
+- 다양하게 state를 가지고 있어야 하고 추상적이지만 최대한 포용할 수 있게 설계해야 함.
+
+예시 - > 레이블(Label), 텍스트(Text), 컨테이너(Container), 버튼(Button), 아이콘(Icon)
+
+#### Molecules(분자)
+
+- 보통 프론트 개발자들이 컴포넌트를 만들 때, 가장 많이 만드는 단위가 분자 수준의 컴포넌트
+- 분자는 분자만의 프로퍼티를 가지고 있을 수 있고 이를 활용해 원자에 기능을 만들어 줄 수도 있다
+- 분자가 원자의 위치값을 지정하기도 한다
+
+예시 → 입력 폼(Input forms), 네비게이션(Navigation), 카드(Card) 등
+
+#### Organisms(유기체)
+
+- 분자를 묶어 관리하는 컴포넌트
+- 프로젝트 별로 유기체에 해당하는 컴포넌트 단위는 다를 수 있다
+- 이를 유기체 단위가 아닌 더 상위 컴포넌트라 할 수 있는 템플릿과 페이지로 관리할 수도 있다
+
+ex) 입력 폼과 함께 헤더를 감싸거나, 여러 카드를 관리하는 그리드
+
+#### Templates(템플릿)
+
+- 여러 유기체가 모여있지만, 페이지보다는 낮은 단위
+- 단, 템플릿에는 Styling이나 Color는 들어가지 않는다
+- 템플릿의 역할은 페이지의 그리드를 정해주는 역할 뿐
+
+---
+
+## 왜 아토믹 디자인을 써야할까?
+
+개인 프로젝트나 소규모 프로젝트를 진행하거나, 유지보수의 필요가 없는 기능 구현을 목적으로 한 프로젝트라면 구조를 신경 쓸 필요가 없다.
+
+하지만 대형 프로젝트나 앞으로 유지보수의 용이한 코드를 짜기 위해서는 아토믹과 같은 디자인 패턴을 사용해야 한다.
+
+---
+
+### 아토믹 디자인 패턴의 장단점
+
+장점
+
+- 재사용 가능한 설계 시스템을 제공
+- 유지, 보수 ,수정이 쉽게 가능
+- 레이아웃을 이해하기 쉽다.
+
+단점
+
+- 컴포넌트 간의 의존성과 복잡도가 생각보다 까다로울 수 있다.
+- 하위 컴포넌트에서 예상치 못한 에러가 발생하면 모든 상위 컴포넌트가 엉망이 되는 일도 발생할 수 있다.
+
+---
+
+### 사용 예시)
+
+먼저 이 블로그를 개발할 때도 완전한 아토믹 디자인 패턴을 사용하진 않았지만,
+가장 재 사용이 많이 되는 Image 컴포넌트를 Atoms로 만들어서 사용했다.
+
+```js
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import _Image from './Image';
+import styled from 'styled-components';
+
+interface Props {
+  mdx: string;
+}
+
+function MDXComponent({ mdx }: Props) {
+  const MDX = useMDXComponent(mdx);
+  const router = useRouter();
+  const wrapperRef = useRef<HTMLInputElement>();
+
+  return (
+    <Wrapper ref={wrapperRef}>
+      <MDX
+        components={{
+          Image,
+        }}
+      />
+    </Wrapper>
+  );
+}
+
+const Wrapper = styled.div`
+  padding: 20px;
+  font-family: NotoSansKR;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 28.8px;
+`;
+
+const Image = styled(_Image)`
+  width: 728px;
+`;
+```
+
+<br />
+위와 같이 다른 곳에서 MDXComponent를 재사용할 수 있도록 만들어줬다.
+<br />
+
+```js
+import { HTMLAttributes, ReactNode } from 'react';
+
+import styled from 'styled-components';
+
+interface Styles {
+  width?: number;
+  height?: number;
+  borderRadius?: number;
+}
+
+interface Props extends HTMLAttributes<HTMLButtonElement>, Styles {
+  children: ReactNode;
+  className?: string;
+}
+
+function Button({ children, className, ...rest }: Props) {
+  return (
+    <StyledButton className={className} {...rest}>
+      {children}
+    </StyledButton>
+  );
+}
+
+const StyledButton =
+  styled.button <
+  Partial <
+  Props >>
+    `
+  all: unset;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: ${({ width }) => (width ? width + 'px' : '100%')};
+  height: ${({ height = 50 }) => (height ? height + 'px' : '100%')};
+  border-radius: ${({ borderRadius = 10 }) => borderRadius + 'px'};
+`;
+
+export default Button;
+```
+
+<br />
+위와 같이 버튼을 재 사용할 수 있게 atoms 구조로 만들어줬다.
+
+### 느낀 점
+
+프론트엔드 개발을 할 때 공통적인 디자인을 갖고 있는 버튼,라벨,input을 여러 번 사용하는 경우가 있다.<br/>
+그때마다 이전에 썼던 코드를 복사해서 사용하는 것보다 재 사용할 수 있게 Atoms구조로 만들어서 사용해보니
+코드의 양 적어질 뿐만이 아니라 코드를 사용할 때 너무나 편했다.
+
+<br />
+하지만, 컴포넌트가 분리되어 있는 상태에서 상위 컨데이너의 사이즈를 정할 수 없는 경우, 미디어쿼리(반응형)을
+사용하기 힘들다.
+<br />
+또한 어디까지 atoms으로 하고 어디까지 molecules로 할 지 확실하게 정하지 않는다면 오히려 더 복잡한 디자인
+패턴이 될 거라고 생각한다. 그렇기에 함부로 사용하기보단 확실하게 설계를 진행하고 사용해야할 것 같다는
+생각이 들었다.

@@ -33,14 +33,23 @@ const Wrapper = styled.div`
 
   // md 글 스타일
   h4 {
-    font-size: 18px;
+    font-size: 15px;
+  }
+  h3 {
+    margin: 40px 0 30px 0;
+    font-family: NotoSansKRBold;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 25px;
+    line-height: 153%;
+    letter-spacing: -0.4px;
   }
   h2 {
     margin: 40px 0 30px 0;
     font-family: NotoSansKRBold;
     font-weight: normal;
     font-style: normal;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 153%;
     letter-spacing: -0.4px;
   }
