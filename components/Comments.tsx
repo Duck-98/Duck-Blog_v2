@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
 const Comments = () => {
-  const [current, setCurrent] = useState<string>('');
+  const [current, setCurrent] = useState<string>('dark');
 
-  useEffect(() => {
-    const item = localStorage.getItem('theme');
-    if (JSON.parse(item).bgColor === '#060606') {
-      setCurrent('light');
-    } else {
-      setCurrent('dark');
-    }
-  }, []);
+  // useEffect(() => {
+  //   const item = window.localStorage.getItem('theme');
+  //   if (JSON.parse(item).bgColor === '#060606') {
+  //     setCurrent('light');
+  //   } else {
+  //     setCurrent('dark');
+  //   }
+  // }, []);
 
   return (
     <section
@@ -23,7 +23,8 @@ const Comments = () => {
         scriptElem.async = true;
         scriptElem.setAttribute('repo', 'Duck-98/duck-blog-comment');
         scriptElem.setAttribute('issue-term', 'title');
-        scriptElem.setAttribute('theme', `github-${current}`);
+        // scriptElem.setAttribute('theme', `github-${current}`);
+        scriptElem.setAttribute('theme', `github-dark`);
         scriptElem.setAttribute('label', 'blog-comment');
         scriptElem.crossOrigin = 'anonymous';
         elem.appendChild(scriptElem);
