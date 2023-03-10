@@ -3,7 +3,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const RecentPosts = ({ posts }) => {
-  console.log(posts, 'posts');
   return (
     <Section>
       <h1>최근 게시물</h1>
