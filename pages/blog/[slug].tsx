@@ -17,8 +17,8 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     // <Container customMeta={customMeta}>
     <Div>
-      <h1>{post.title}</h1>
-      <MDXComponent mdx={post.body.code} />
+      <h1>{post!.title}</h1>
+      <MDXComponent mdx={post!.body.code} />
       <Comments />
     </Div>
     // </Container>
