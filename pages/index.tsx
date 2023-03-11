@@ -20,7 +20,6 @@ interface Props {
 
 const Home = ({ toggleTheme, theme, posts }: Props) => {
   const [modalOpen, setModalOpen] = useState(true);
-
   return (
     <>
       <Div>
@@ -61,7 +60,10 @@ const Home = ({ toggleTheme, theme, posts }: Props) => {
 };
 
 export const getStaticProps = async () => {
-  const posts = allPosts.sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+  const posts = allPosts
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)))
+    .slice(0, 3);
+  // 맨 앞 3개만 불러오도록 변경
   return {
     props: {
       posts,
