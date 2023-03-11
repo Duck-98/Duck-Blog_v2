@@ -138,6 +138,11 @@ const Wrapper = styled.div`
       font-size: 0.5rem;
     }
   }
+  a {
+    color: skyblue;
+    font-size: 25px;
+    cursor: pointer;
+  }
 `;
 
 const Image = styled(_Image)`
