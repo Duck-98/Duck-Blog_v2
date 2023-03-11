@@ -1,0 +1,107 @@
+---
+title: TDD란?
+date: 2022-10-22
+description: 테스트코드에 관한 글
+---
+
+## TDD란 무엇일까?
+
+TDD(Test Driven Development)는 '테스트 주도 개발'이라고 한다.
+
+테스트 주도 개발은 테스트 코드를 먼저 개발하고 본격적인 개발을 시작하는 소프트웨어 방법론이다.
+
+테스트 주도 개발 절차
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbENdOD%2FbtrbN6PbqBy%2F24kYjcvPwBvgJbDjlNWPFk%2Fimg.png)
+
+1. 항상 실패하는 테스트 코드를 먼저 작성한다.
+2. 테스트를 통과 시키기 위한 실제 코드를 작성한다.
+3. 다음으로 테스트가 통과하면 중복코드를 제거하고, 리팩터링을 수행한다.
+
+### TDD는 왜 필요할까?
+
+테스트코드를 작성하지 않으면 에러가 발생했을 때, 원인을 모르거나, 아무런 문제가 없는데 보이는데 오류가 발생하는 경우가 있다.
+하지만 테스트코드가 있다면, 위와 같은 상황에서 빠르게 대응할 수 있다.
+
+스타트업에서 인턴을 하면서, 스타트업 특성 상 빠른 기능 개발에 몰두하는 경우가 많았다.
+그렇기에 유지보수에 용이한 코드를 짜는 것보다 기능을 우선시 하여 추후에 코드를 수정하거나 기능을 변경할 때 어려움을 겪었다.
+
+하지만 테스트코드를 작성하면 **유지보수에 용이**할 뿐만이 아니라 **자체 테스트 비용**도 적어지고 코드의 품질 또한 상승한다.
+
+### TDD의 장단점
+
+#### 장점
+
+- 객체지향적이고 효율적인 코드를 작성할 수 있다.
+  테스트코드를 만들어 놓으면 테스트를 원하는 만큼 할 수 있으므로 모듈화가 잘 이루어진다. 모듈화가 이루어짐에 따라서 의존성이 낮은 독립적인 코드를 작성하게 되어 오류가 발생했을 때 전체 코드에 영향을 덜 끼칠 수 있다.
+  <br />
+- 디버깅 시간을 단축시켜서 효율적인 개발이 가능하다.
+  <br />
+- 유지보수가 쉽고 추가적인 기능 개발이 쉽다.
+  개발이 완료된 소프트웨어에 어떤 기능을 추가할 때 가장 우려되는 점은 해당 기능이 기존 코드에 어떤 영향을 미칠지 알지 못한다. <br/>하지만 TDD의 경우 모듈형 코드로 잘 생산되어 있고, 의존성이 낮은 독립적인 코드로 이미 만들어져 있기 때문에 기능 추가가 쉽고 이는 유지보수가 쉽다고 말할 수 있다.
+
+#### 단점
+
+- 시간이 오래걸린다. 하지만 장기적인 관점으로 봤을 때 오히려 더 시간을 아끼게 된다.
+  하지만 스타트업 특성상 빠른 기능 개발에 포커스를 맞추고 있기에 쉽진 않겠지만, 나중을 생각했을 때 훨씬 더 효율적이다.
+
+### 테스트 코드를 작성해보자!
+
+그렇다면 리액트에서 테스트 코드를 작성해보자!
+예를 들어 주문을 하는 페이지를 만들어본다고 생각하자.
+
+#### TestCode
+
+```js
+import { render, screen } from '@testing-library/react';
+import SummaryPage from '../index';
+
+test('checkbox and Button', () => {
+  render(<SummaryPage />);
+  const checkbox = screen.getByRole('checkbox', {
+    name: '주문하려는 것을 확인하셨나요?',
+  });
+  expect(checkbox.checked).toEqual(false);
+  // 처음에는 체크박스가 설정이 안되어있어서 false임
+  const confirmButton = screen.getByRole('button', { name: '주문 확인' });
+  expect(confirmButton.disabled).toBeTruthy();
+  //true로 취급되는 구문을 확인
+});
+```
+
+위와 같이 테스트코드를 작성할 수 있다.
+
+기능 코드
+
+```js
+import React, { useState } from 'react';
+
+function SummaryPage() {
+  const [checked, setChecked] = useState(false);
+  return (
+    <div>
+      <form>
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => setChecked(e.target.checked)}
+          id="confirm-checkbox"
+        />
+        <label htmlFor="confirm-checkbox">주문하려는 것을 확인하셨나요?</label>
+        <br />
+        <button disabled={!checked} type="submit">
+          주문 확인
+        </button>
+      </form>
+    </div>
+  );
+}
+export default SummaryPage;
+```
+
+간단한 기능 개발이라도 TDD로 개발을 하게 되면 평소보다 2배정도의 코드를 작성하게 된다.
+귀찮긴 하지만 나중을 생각해서는 꼭 필요한 소프트웨어 방법론이라고 생각한다.
+
+<br />
+
+**이론 참고 링크 https://resilient-923.tistory.com/327**

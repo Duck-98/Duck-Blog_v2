@@ -1,0 +1,62 @@
+---
+title: Next.js) window.is not defined 에러
+date: 2022-08-12
+description: window.is not defined 에러
+---
+
+## Next.js) window. is not defined 에러
+
+Next.js를 이용하여 개발을 하는 과정에서
+localStorage를 이용하여 데이터를 받아오려고 하는 와중에 window.is not defined라는 에러가 발생했다.
+
+### 에러 발생 이유
+
+Next.js는 서버사이드렌더링(SSR) 방식이다.
+서버사이드에서 먼저 실행된 후 클라이언트 사이드에서 실행이 되는데 우리가 사용하려는 window 객체는 서버사이드에는 존재하지 않고 클라이언트 사이드에 존재한다.
+
+그렇기에 리액트 내에서 사용하기 위해서는 componentDidMount내에서 코드가 실행되도록 작성해야한다.
+
+### 해결방법
+
+1. next/dynamic **[공식문서 링크](https://nextjs.org/docs/advanced-features/dynamic-import)**
+
+```js
+import dynamic from 'next/dynamic';
+
+const DynamicHeader = dynamic(() => import('../components/header'), {
+  loading: () => <p>Loading...</p>,
+});
+
+export default function Home() {
+  return <DynamicHeader />;
+}
+```
+
+위와 같이 문제가 되는 컴포넌트를 사용할 때 해당 컴포넌트를 dynamic을 이용하여 클라이언트사이드렌더링(CSR)로 바꿔준다.
+
+2. useEffect
+   useEffect는 componentDidMount내에서 코드가 실행되기 때문에 서버에서 window 객체를 확인하지 않는다.
+
+예시)
+
+```js
+import React, { useEffect, useState } from 'react';
+
+const Example = () => {
+  useEffect(() => {
+    if (window.localStorage.getItem('token') === null) {
+      window.location.replace('/home');
+    }
+  }, []);
+};
+```
+
+3. typeof
+
+예시)
+
+```js
+const [key, setKey] = useState(
+  typeof window !== 'undefined' ? window.localStorage.getItem(Key) || 0 : null,
+);
+```

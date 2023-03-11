@@ -1,0 +1,43 @@
+---
+title: Recoil
+date: 2022-07-06
+description: 상태관리 라이브러리 Recoil
+---
+
+## 상태관리 라이브러리란?
+
+리액트 컴포넌트는 내장된 상태 객체를 갖고 있다.
+
+작은 규모의 프로젝트는 상태 전달이 미미하지만, 큰 규모의 프로젝트에서는
+
+복잡하고 방대한 상태 전달이 발생한다.
+
+위와 같은 문제를 해결하기 위해 우리는 상태관리 라이브러리를 사용한다.
+
+---
+
+### 그 중 Recoil을 사용하는 이유
+
+- Api, 동작 등을 최대한 리액트스럽게 유지하여 만들어졌다.
+  배우기 쉽고 useState를 recoil의 useRecoilState로 바꾸기만 하면 사용할 수 있다.
+
+- 실제 컴포넌트에서 사용하는 데이터만 구독이 가능하고 비동기적 데이터 흐름도 제공해준다.
+
+- 코드 분할을 손상시키지않으며, 지속성,라우팅,시간이동 디버깅 등을 구현할 수 있게 해준다.
+
+### Recoil 핵심
+
+- Atom : 하나의 상태
+
+- useRecoilState : atom의 값을 읽고 update하는 hook이다. React Hook의 useState와 같은 방식으로 사용하면 된다. 클래스형 컴포넌트의 상태관리에서 state와 setState를 합친것과 같음
+
+- useRecoilValue : setter를 제외한 atom의 값만 제공함.
+  클래스형 컴포넌트의 상태관리에서 state의 역할을 한다.
+
+- useSetRecoilState : setter만 제공함
+  클래스형 컴포넌트의 상태관리에서 setState의 역할이다.
+
+- Selector : 다른 atom들 혹은 selector들을 받아 사용하는 순수 함수로, atom의 상태에 의존한 동적인 데이터를 파생시킴. 받은 atom들 혹은 selector들 중 어떤 것이 업데이트되면, selector함수는 다시 평가되고 컴포넌트가 리렌더됨.
+
+예시 그림)
+![](https://images.velog.io/images/dduck/post/235d5183-2a31-40f7-a8bd-0c93474efd4d/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-03-08%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%207.29.41.png)

@@ -1,0 +1,76 @@
+---
+title: styled-components) Props를 이용하여 스타일링하기 -2
+date: 2022-07-20
+description: styled-components with props - 2
+---
+
+## styled-components) Props를 이용하여 스타일링하기 - 2
+
+저번 글에 이어서 styled-components에 대한 글이다!
+
+메뉴를 클릭했을 때 div가 길어지게 만드려고 한다.
+
+```js
+const Menu =
+  styled.div <
+  { toggle: boolean } >
+  `
+  position: relative;
+  padding: 20px 18px;
+  min-height: 420px;
+  overflow: hidden;
+  height: auto;
+  transition: min-height 0.4s ease;
+  ${({ toggle }) =>
+    toggle
+      ? css`
+          min-height: 700px;
+          transition: min-height 0.4s ease;
+        `
+      : css``};
+`;
+```
+
+위에 처럼 div안에 toogle이라는 state를 props로 전달할 수 있다.
+
+toogle이 만약 true일 때 길이가 커지고 false면 작아지게 하려면
+
+```js
+ ${({ toggle }) =>
+    toggle
+      ? css`
+          min-height: 700px;
+          transition: min-height 0.4s ease;
+        `
+      : css``};
+```
+
+이렇게 props 참/거짓에 따라서 style이 변경되게 짜줄 수 있다.
+
+<br />
+
+```js
+import React, {useState}from 'react';
+
+const Home = () => {
+    const [toggle, setToggle] = useState(false);
+
+    const handleToggle = () => {
+    setToggle((prev) => !prev);
+  };
+
+return
+    (
+    <>
+        <Menu toggle={toggle} onClick={handleToggle}>
+            <li>햄버거</li>
+            <li>치즈버거</li>
+            <li>더블버거</li>
+            <li>쉬림프치즈버거</li>
+        </Menu>
+    <>
+    )
+}
+```
+
+이제 해당 Menu div에 toogle props를 전달해주고 토글값을 변경시켜주는 함수를 onClick 속성을 이용하여 넣어주면 메뉴를 클릭했을 때 div가 길어지도록 만들 수 있다!

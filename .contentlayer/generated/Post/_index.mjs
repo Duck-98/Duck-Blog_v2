@@ -2,5 +2,11 @@
 
 import _1Mdx from './_1.mdx.json' assert { type: 'json' }
 import _2Mdx from './_2.mdx.json' assert { type: 'json' }
+import _3Mdx from './_3.mdx.json' assert { type: 'json' }
+import _4Mdx from './_4.mdx.json' assert { type: 'json' }
+import _5Mdx from './_5.mdx.json' assert { type: 'json' }
+import _6Mdx from './_6.mdx.json' assert { type: 'json' }
+import _7Mdx from './_7.mdx.json' assert { type: 'json' }
+import _8Mdx from './_8.mdx.json' assert { type: 'json' }
 
-export const allPosts = [_1Mdx, _2Mdx]
+export const allPosts = [_1Mdx, _2Mdx, _3Mdx, _4Mdx, _5Mdx, _6Mdx, _7Mdx, _8Mdx]
