@@ -1,0 +1,24 @@
+---
+title: 알고리즘) 2진수 변환
+date: 2022-07-23
+description: 2진수 변환
+---
+
+## 알고리즘) 2진수 변환
+
+```js
+let result = '';
+let x;
+while (true) {
+  if (x % 2 == 0) {
+    result += '0';
+  } else {
+    result += '1';
+  }
+  x = Math.floor(x / 2);
+  if ((x == 1) | (x == 0)) {
+    result += String(x);
+  }
+}
+console.log(result);
+```
