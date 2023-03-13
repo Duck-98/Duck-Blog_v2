@@ -68,13 +68,13 @@ const Wrapper = styled.div`
     font-style: normal;
   }
   p:nth-child(4) {
-    font-family: NotoSansKR;
+    /* font-family: NotoSansKR;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
     line-height: 20px;
     letter-spacing: -0.4px;
-    color: #878787;
+    color: #878787; */
   }
   ul:last-child {
     font-family: NotoSansKR;
