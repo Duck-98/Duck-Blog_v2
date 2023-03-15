@@ -85,47 +85,76 @@ ex) 입력 폼과 함께 헤더를 감싸거나, 여러 카드를 관리하는 �
 가장 재 사용이 많이 되는 Image 컴포넌트를 Atoms로 만들어서 사용했다.
 
 ```js
-import { useRef } from 'react';
-import { useRouter } from 'next/router';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import _Image from './Image';
-import styled from 'styled-components';
+import React from 'react';
+import NextImage, { ImageProps } from 'next/image';
 
-interface Props {
-  mdx: string;
+import styled, { css } from 'styled-components';
+
+interface Props extends ImageProps {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  autoSize?: boolean;
+  className?: string;
+  borderRadius?: string;
 }
 
-function MDXComponent({ mdx }: Props) {
-  const MDX = useMDXComponent(mdx);
-  const router = useRouter();
-  const wrapperRef = useRef<HTMLInputElement>();
-
+function Image({ src, alt, width, height, autoSize, ...rest }: Props) {
   return (
-    <Wrapper ref={wrapperRef}>
-      <MDX
-        components={{
-          Image,
-        }}
+    <Wrapper autoSize={autoSize} {...rest}>
+      <TransitionImage
+        src={src}
+        alt={alt}
+        aria-label={alt}
+        width={width}
+        height={height}
+        layout={autoSize ? 'fill' : 'fixed'}
+        objectFit={autoSize ? 'contain' : 'cover'}
+        placeholder="blur"
+        blurDataURL={src}
+        draggable={false}
+        {...rest}
       />
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
-  padding: 20px;
-  font-family: NotoSansKR;
-  font-weight: normal;
-  font-style: normal;
-  line-height: 28.8px;
+const Wrapper = styled.div<Pick<Props, 'autoSize'>>`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  ${({ autoSize }) =>
+    autoSize &&
+    css`
+      display: block;
+      min-height: 215px;
+      position: relative;
+      & > span {
+        position: unset !important;
+      }
+      & img {
+        position: relative !important;
+        height: auto !important;
+      }
+    `};
 `;
 
-const Image = styled(_Image)`
-  width: 728px;
+const TransitionImage = styled(NextImage)`
+  transition: 0.2s;
+  border-radius: 24px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 85%;
+  }
 `;
+
+export default Image;
+
 ```
 
 <br />
-위와 같이 다른 곳에서 MDXComponent를 재사용할 수 있도록 만들어줬다.
+위와 같이 다른 곳에서 Image 컴포넌트를 재사용할 수 있도록 만들어줬다.
 <br />
 
 ```js
