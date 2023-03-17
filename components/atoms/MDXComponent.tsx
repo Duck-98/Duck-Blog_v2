@@ -32,8 +32,13 @@ const Wrapper = styled.div`
   line-height: 28.8px;
 
   // md 글 스타일
-  h4 {
+  h5 {
+    margin: 10px 0 15px 0;
     font-size: 15px;
+  }
+  h4 {
+    margin: 10px 0 15px 0;
+    font-size: 20px;
   }
   h3 {
     margin: 40px 0 30px 0;
@@ -142,6 +147,12 @@ const Wrapper = styled.div`
     color: skyblue;
     font-size: 25px;
     cursor: pointer;
+  }
+  hr {
+    height: 2px;
+    background-color: #878787;
+    border: none;
+    margin: 40px 0 30px 0;
   }
 `;
 
