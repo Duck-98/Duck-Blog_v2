@@ -72,15 +72,6 @@ const Wrapper = styled.div`
     font-weight: normal;
     font-style: normal;
   }
-  p:nth-child(4) {
-    /* font-family: NotoSansKR;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: -0.4px;
-    color: #878787; */
-  }
   ul:last-child {
     font-family: NotoSansKR;
     font-weight: normal;
@@ -92,11 +83,12 @@ const Wrapper = styled.div`
     margin: 0 0 30px 0;
   }
   strong {
-    font-family: NotoSansKRBold;
     font-weight: normal;
     font-style: normal;
   }
-
+  li {
+    padding-bottom: 8px;
+  }
   ul {
     padding: 16px 14px;
     background-color: #f9fafb;
@@ -111,13 +103,8 @@ const Wrapper = styled.div`
     color: #333333;
     text-decoration: none !important;
     border-radius: 10px;
-  }
-  li {
-    font-size: 14px;
-    list-style-position: inside;
-    text-indent: -20px;
-    padding-left: 20px;
-    padding-bottom: 8px;
+    list-style-position: outside;
+    padding: 2rem;
   }
   h2:last-of-type {
     margin-bottom: 16px;
