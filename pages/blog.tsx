@@ -24,7 +24,7 @@ const Blog = ({ toggleTheme, posts, theme }: Props) => {
   const itemChange = (e: any) => {
     setItems(Number(e.target.value));
   };
-  console.log(items * (page - 1), items * (page - 1) + items);
+  console.log(posts);
   return (
     <>
       <BtnWrapper>
@@ -47,6 +47,7 @@ const Blog = ({ toggleTheme, posts, theme }: Props) => {
             <option value="20">20개</option>
           </select>
         </div>
+        <TagContainer></TagContainer>
         {posts.slice(items * (page - 1), items * (page - 1) + items).map((post) => {
           return (
             <BlogPost
@@ -87,6 +88,11 @@ const Div = styled.div`
   flex-direction: column;
   padding-bottom: 5rem;
 `;
+
+const TagContainer = styled.div`
+  display: flex;
+`;
+
 const Button = styled.button`
   position: relative;
   bottom: 45px;
