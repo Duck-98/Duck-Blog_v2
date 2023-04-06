@@ -9,6 +9,7 @@ export interface PostProp {
   date: string;
   title: string;
   description: string;
+  tag: string;
   _id: string;
   _raw: { flattenedPath: string };
 }

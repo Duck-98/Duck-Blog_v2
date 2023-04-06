@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { WiDaySunny } from 'react-icons/wi';
 import { MdOutlineModeNight } from 'react-icons/md';
@@ -18,13 +18,21 @@ const Blog = ({ toggleTheme, posts, theme }: Props) => {
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
 
+  const tag: Array<string> = [];
+  const handleFilterTag = () => {
+    posts.map((post) => tag.push(post.tag));
+  };
+  handleFilterTag();
+
+  const tagList = tag.filter((v: string, i: number) => tag.indexOf(v) === i);
+
   const handlePageChange = (page: number) => {
     setPage(page);
   };
   const itemChange = (e: any) => {
     setItems(Number(e.target.value));
   };
-  console.log(posts);
+
   return (
     <>
       <BtnWrapper>
@@ -39,15 +47,22 @@ const Blog = ({ toggleTheme, posts, theme }: Props) => {
         )}
       </BtnWrapper>
       <Div>
-        <div>
-          <select name="items" onChange={itemChange}>
-            <option value="5">5개</option>
-            <option value="10">10개</option>
-            <option value="15">15개</option>
-            <option value="20">20개</option>
-          </select>
-        </div>
-        <TagContainer></TagContainer>
+        <select name="items" onChange={itemChange}>
+          <option value="5">5개</option>
+          <option value="10">10개</option>
+          <option value="15">15개</option>
+          <option value="20">20개</option>
+        </select>
+        <Category>
+          {tagList.map((tag) => {
+            return (
+              <>
+                <TagContainer>{tag}</TagContainer>
+              </>
+            );
+          })}
+        </Category>
+
         {posts.slice(items * (page - 1), items * (page - 1) + items).map((post) => {
           return (
             <BlogPost
@@ -89,8 +104,13 @@ const Div = styled.div`
   padding-bottom: 5rem;
 `;
 
+const Category = styled.div`
+  display: flex;
+`;
+
 const TagContainer = styled.div`
   display: flex;
+  padding: 10px;
 `;
 
 const Button = styled.button`
