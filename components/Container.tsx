@@ -22,6 +22,7 @@ const Container = (props) => {
           <title>{meta.title}</title>
           <meta content={meta.description} name="description" />
           <meta property="og:site_name" content={meta.author} />
+          <meta property="og:image" content="/public/dev.jpg" />
         </Head>
         <Header>
           <div className="img-con">
