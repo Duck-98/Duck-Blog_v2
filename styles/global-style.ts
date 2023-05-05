@@ -1,5 +1,4 @@
 // global-styles.ts
-
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
@@ -12,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         /* align-items: center; */
+        transition: background-color 0.3s ease, color 0.3s ease;
         background: ${({ theme }: { theme: any }) => theme.bgColor};
         /* display: flex; */
         /* flex-direction: column; */
