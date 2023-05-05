@@ -3,35 +3,21 @@ import RecentPosts from 'components/RecentPosts';
 import styled from 'styled-components';
 import metadata from '../data/metadata';
 import Image from 'components/atoms/Image';
-import { WiDaySunny } from 'react-icons/wi';
 import { MdOutlineModeNight } from 'react-icons/md';
 import { HiOutlineMail } from 'react-icons/hi';
-import { lightTheme } from 'styles/theme';
 import { allPosts } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
-import { ThemeProp } from 'types/type';
 import Modal from 'components/molecules/Modal';
 
 interface Props {
-  toggleTheme: () => void;
-  theme: ThemeProp;
   posts: InferGetStaticPropsType<typeof getStaticProps>[];
 }
 
-const Home = ({ toggleTheme, theme, posts }: Props) => {
+const Home = ({ posts }: Props) => {
   const [modalOpen, setModalOpen] = useState(true);
   return (
     <>
       <Div>
-        {theme === lightTheme ? (
-          <Button onClick={toggleTheme}>
-            <WiDaySunny />
-          </Button>
-        ) : (
-          <Button onClick={toggleTheme}>
-            <Night />
-          </Button>
-        )}
         <div className="img-con">
           <Image src="/blog.jpg" alt="blog-img" autoSize={false} width={768} height={600} />
           <span className="title">{metadata.title}</span>
@@ -130,6 +116,7 @@ const Button = styled.button`
 `;
 const Div = styled.div`
   width: 100%;
+  padding-top: 50px;
   .img-con {
     position: relative;
     width: 100%;

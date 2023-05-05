@@ -6,6 +6,9 @@ import metadata from '../data/metadata';
 // import Image from './atoms/Image';
 import Image from 'next/image';
 import Link from 'next/link';
+import { WiDaySunny } from 'react-icons/wi';
+import { Night } from '~/styles/blog.styles';
+import { lightTheme } from '~/styles/theme';
 
 const Container = (props) => {
   const meta = {
@@ -14,6 +17,7 @@ const Container = (props) => {
     author: metadata.author,
     ...props.customMeta,
   };
+
   return (
     <>
       <Div>
@@ -30,7 +34,17 @@ const Container = (props) => {
               <Image className="img" src="/home.jpg" alt="blog-img" width={50} height={50} />
             </Link>
             <span className="title">{metadata.title}</span>
+            {props.theme === lightTheme ? (
+              <Button onClick={props.toggleTheme}>
+                <WiDaySunny />
+              </Button>
+            ) : (
+              <Button onClick={props.toggleTheme}>
+                <Night />
+              </Button>
+            )}
           </div>
+
           <Nav />
         </Header>
         <Main>{props.children}</Main>
@@ -76,4 +90,9 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-top: 0.25rem;
+`;
+
+export const Button = styled.button`
+  font-size: 40px;
+  padding-left: 30px;
 `;

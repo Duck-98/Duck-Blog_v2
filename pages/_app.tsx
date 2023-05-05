@@ -34,8 +34,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Container toggleTheme={toggleTheme}>
-        <Component {...pageProps} toggleTheme={toggleTheme} theme={theme} />
+      <Container toggleTheme={toggleTheme} theme={theme}>
+        <Component {...pageProps} />
       </Container>
     </ThemeProvider>
   );

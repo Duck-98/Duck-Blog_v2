@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import * as Styled from '~/styles/blog.styles';
-import { WiDaySunny } from 'react-icons/wi';
 import { allPosts } from 'contentlayer/generated';
 import Pagination from 'react-js-pagination';
-import { lightTheme } from 'styles/theme';
 import { ThemeProp, PostProp } from 'types/type';
 import BlogPost from 'components/\bBlogPost';
 import Link from 'next/link';
 
 interface Props {
-  toggleTheme: () => void;
   theme: ThemeProp;
   posts: PostProp[];
 }
 
-const Blog = ({ toggleTheme, posts, theme }: Props) => {
+const Blog = ({ posts }: Props) => {
   const [page, setPage] = useState(1);
   const [items, setItems] = useState(5);
 
@@ -36,17 +33,6 @@ const Blog = ({ toggleTheme, posts, theme }: Props) => {
 
   return (
     <>
-      <Styled.BtnWrapper>
-        {theme === lightTheme ? (
-          <Styled.Button onClick={toggleTheme}>
-            <WiDaySunny />
-          </Styled.Button>
-        ) : (
-          <Styled.Button onClick={toggleTheme}>
-            <Styled.Night />
-          </Styled.Button>
-        )}
-      </Styled.BtnWrapper>
       <Styled.Div>
         <div className="select">
           <select name="items" onChange={itemChange}>
@@ -83,6 +69,7 @@ const Blog = ({ toggleTheme, posts, theme }: Props) => {
             />
           );
         })}
+
         <Styled.PaginationBox>
           <Pagination
             activePage={page}

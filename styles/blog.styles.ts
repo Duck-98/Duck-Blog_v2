@@ -4,6 +4,7 @@ import { MdOutlineModeNight } from 'react-icons/md';
 export const Div = styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 50px;
   padding-bottom: 5rem;
 
   .select {
