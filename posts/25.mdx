@@ -48,15 +48,17 @@ a(5); // 25;
 <br />
 
 ```js
-function outerFn() {
+// 클로저를 만드는 형태 2. - 전역에 선언한 변수를 박스 안에서
+// 함수로 정의하고 전역에서 호출
+let globalFunc;
+{
   let x = 10;
-  return function innerFn(y) {
-    // innerFn 함수는 클로저다.
+  globalFunc = function (y) {
+    // globalFunc 함수는 클로저다.
     return (x = x + y);
   };
 }
-let a = outerFn(); // 외부함수 호출은 한번만. 이제 a 변수는 innerFn 함수를 참조한다.
-a(5); // 15;
-a(5); // 20;
-a(5); // 25;
+globalFunc(5); // 15;
+globalFunc(5); // 20;
+globalFunc(5); // 25;
 ```
