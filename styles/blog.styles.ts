@@ -11,8 +11,13 @@ export const Div = styled.div`
   }
 `;
 
+export const BlogContainer = styled.div`
+  height: 50vh;
+`;
+
 export const Category = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const TagContainer = styled.div<{ isActive?: boolean }>`
