@@ -61,6 +61,7 @@ const Button = styled.button<{ isOpen: boolean }>`
   font-size: 40px;
   @media screen and (max-width: 768px) {
     display: flex;
+    padding-right: 15px;
   }
 `;
 
