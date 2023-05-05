@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import Prism from 'prismjs';
 import _Image from './Image';
 import styled from 'styled-components';
 
@@ -9,17 +9,17 @@ interface Props {
 }
 
 function MDXComponent({ mdx }: Props) {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   const MDX = useMDXComponent(mdx);
-  const router = useRouter();
   const wrapperRef = useRef<HTMLInputElement>();
-
+  const component = {
+    Image,
+  };
   return (
     <Wrapper ref={wrapperRef}>
-      <MDX
-        components={{
-          Image,
-        }}
-      />
+      <MDX components={component} />
     </Wrapper>
   );
 }
@@ -83,7 +83,7 @@ const Wrapper = styled.div`
     margin: 0 0 30px 0;
   }
   strong {
-    font-weight: normal;
+    font-weight: 900;
     font-style: normal;
   }
   li {

@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from 'styles/theme';
 import { GlobalStyle } from 'styles/global-style';
 import Container from 'components/Container';
+import 'prismjs/themes/prism-tomorrow.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState(darkTheme);
