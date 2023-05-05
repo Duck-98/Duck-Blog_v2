@@ -33,4 +33,4 @@ const Comments = () => {
   );
 };
 
-export default Comments;
+export default memo(Comments);
