@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import * as Styled from '~/styles/blog.styles';
-import { WiDaySunny } from 'react-icons/wi';
 import { allPosts } from 'contentlayer/generated';
 import Pagination from 'react-js-pagination';
-import { lightTheme } from 'styles/theme';
 import { ThemeProp, PostProp } from 'types/type';
 import BlogPost from 'components/\bBlogPost';
 import Link from 'next/link';
 
 interface Props {
-  toggleTheme: () => void;
   theme: ThemeProp;
   posts: PostProp[];
 }
 
-const Tag = ({ toggleTheme, posts, theme }: Props) => {
+const Tag = ({ posts }: Props) => {
   const router = useRouter();
 
   const filterPosts = posts.filter((v: any) => v.tag === router.query.tag);
@@ -43,17 +40,6 @@ const Tag = ({ toggleTheme, posts, theme }: Props) => {
 
   return (
     <>
-      <Styled.BtnWrapper>
-        {theme === lightTheme ? (
-          <Styled.Button onClick={toggleTheme}>
-            <WiDaySunny />
-          </Styled.Button>
-        ) : (
-          <Styled.Button onClick={toggleTheme}>
-            <Styled.Night />
-          </Styled.Button>
-        )}
-      </Styled.BtnWrapper>
       <Styled.Div>
         <div className="select">
           <select name="items" onChange={itemChange}>
