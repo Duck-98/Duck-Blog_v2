@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^13.1.6",
+    "babel-plugin-styled-components": "^2.1.1",
     "contentlayer": "^0.2.6",
     "next": "13.1.6",
     "next-contentlayer": "^0.2.6",
+    "next-transpile-modules": "^10.0.0",
     "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -24,6 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "18.14.0",
+    "@types/prismjs": "^1.26.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/styled-components": "^5.1.26",
