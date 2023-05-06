@@ -7,19 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     * {
     	margin: 0;
         padding: 0;
-        /* box-sizing: border-box; */
     }
     body {
-        /* align-items: center; */
         transition: background-color 0.3s ease, color 0.3s ease;
         background: ${({ theme }: { theme: any }) => theme.bgColor};
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* justify-content: center; */
-        /* height: 100vh; */
-        /* margin: 0; */
-        /* padding: 0; */
-        /* transition: all 0.25s linear; */
         color: ${({ theme }: { theme: any }) => theme.textColor};
     }
     button { 
@@ -27,8 +18,6 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
         outline: none;
         background: none;
-        /* color: ${({ theme }: { theme: any }) => theme.bgColor}; */
-        /* background-color: ${({ theme }: { theme: any }) => theme.textColor}; */
     }
     a{
          color: ${({ theme }: { theme: any }) => theme.textColor};
@@ -39,5 +28,5 @@ export const GlobalStyle = createGlobalStyle`
             text-decoration-line: none;
          }
     }
-   
+
 `;
