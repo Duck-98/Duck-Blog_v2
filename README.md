@@ -9,12 +9,17 @@
 
 ## 성능 개선 & 버그 수정
 
+1. React.memo를 이용한 댓글 컴포넌트 리렌더링 방지
+
 ---
 
 ## 기능 추가
 
 1. 카테고리 기능
 2. sitemap 적용
+3. 다크모드
+4. 코드 블럭 스타일
+5. 댓글 기능
 
 ---
 
@@ -24,6 +29,7 @@
 - Typescript
 - Next.js
 - Styled-component
+- Prism.js
 
 ---
 
