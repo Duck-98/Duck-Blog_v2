@@ -74,6 +74,8 @@ const Div = styled.div`
       border-radius: 100%;
     }
     .title {
+      font-family: 'NanumSquare';
+      font-weight: 600;
       padding-left: 0.75rem;
     }
   }

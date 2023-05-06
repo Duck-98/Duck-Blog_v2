@@ -19,18 +19,21 @@ const CustomLink = styled(Link)`
     transform: translateX(-0.375rem);
   }
   .day {
-    font-weight: 500;
+    font-family: 'NanumSquare';
+    font-weight: 600;
     font-size: 0.75rem; /* 12px */
     color: rgb(156 163 175);
   }
   .title {
-    font-weight: bolder;
+    font-family: 'NanumSquare';
+    font-weight: 800;
     font-size: 1.5rem; /* 24px */
     margin-top: 0.5rem; /* 8px */
   }
   .content {
+    font-family: 'NanumSquare';
     color: rgb(75 85 99);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1rem; /* 24px */
     margin-top: 0.25rem; /* 4px */
   }

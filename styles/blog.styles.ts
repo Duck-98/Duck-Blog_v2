@@ -22,6 +22,8 @@ export const Category = styled.div`
 `;
 
 export const TagContainer = styled.div<{ isActive?: boolean }>`
+  font-family: 'NanumSquare';
+  font-weight: 600;
   display: flex;
   margin: 20px 5px 0 5px;
   flex-shrink: 0;
@@ -42,7 +44,7 @@ export const TagContainer = styled.div<{ isActive?: boolean }>`
       ? css`
           background: ${({ theme }: { theme: any }) => theme.textColor};
           color: ${({ theme }: { theme: any }) => theme.grayColor};
-          font-weight: bolder;
+          font-weight: 800;
         `
       : css``};
 `;
@@ -50,7 +52,8 @@ export const TagContainer = styled.div<{ isActive?: boolean }>`
 export const DefaultTagContainer = styled(TagContainer)`
   background: ${({ theme }: { theme: any }) => theme.textColor};
   color: ${({ theme }: { theme: any }) => theme.grayColor};
-  font-weight: bolder;
+  font-family: 'NanumSquare';
+  font-weight: 800;
 `;
 
 export const Button = styled.button`

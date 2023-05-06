@@ -42,7 +42,8 @@ const Wrapper = styled.div`
   }
   h3 {
     margin: 40px 0 30px 0;
-    font-family: NotoSansKRBold;
+    font-family: 'NanumSquare';
+    font-weight: 600;
     font-weight: normal;
     font-style: normal;
     font-size: 25px;
@@ -51,31 +52,27 @@ const Wrapper = styled.div`
   }
   h2 {
     margin: 40px 0 30px 0;
-    font-family: NotoSansKRBold;
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'NanumSquare';
+    font-weight: 600;
     font-size: 30px;
     line-height: 153%;
     letter-spacing: -0.4px;
   }
   h1 {
-    font-family: NotoSansKRBold;
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'NanumSquare';
+    font-weight: 800;
     line-height: 46px;
     text-align: center;
     letter-spacing: -0.4px;
     margin-bottom: 40px;
   }
   p {
-    font-family: NotoSansKR;
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'NanumSquare';
+    font-weight: 300;
   }
   ul:last-child {
-    font-family: NotoSansKR;
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'NanumSquare';
+    font-weight: 300;
     list-style: none;
     color: #000000;
     line-height: 190%;
@@ -83,10 +80,12 @@ const Wrapper = styled.div`
     margin: 0 0 30px 0;
   }
   strong {
-    font-weight: 900;
-    font-style: normal;
+    font-family: 'NanumSquare';
+    font-weight: 800;
   }
   li {
+    font-family: 'NanumSquare';
+    font-weight: 600;
     padding-bottom: 8px;
   }
   ul {
@@ -94,9 +93,8 @@ const Wrapper = styled.div`
     background-color: #f9fafb;
     color: black;
     list-style: inside;
-    font-family: NotoSansKR;
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'NanumSquare';
+    font-weight: 300;
     font-size: 15px;
     line-height: 26px;
     letter-spacing: -0.4px;
@@ -119,7 +117,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
   pre {
-    background: ${({ theme }: { theme: any }) => theme.grayColor};
+    background: #1e1e1e;
   }
   code {
     width: 100%;
@@ -131,6 +129,8 @@ const Wrapper = styled.div`
     }
   }
   a {
+    font-family: 'NanumSquare';
+    font-weight: 300;
     color: skyblue;
     font-size: 25px;
     cursor: pointer;

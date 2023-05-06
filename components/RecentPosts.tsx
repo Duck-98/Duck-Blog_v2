@@ -24,9 +24,10 @@ const Section = styled.section`
   margin-top: 2.5rem;
   margin-bottom: 5rem;
   h1 {
+    font-family: 'NanumSquare';
+    font-weight: 800;
     font-size: 1.875rem; /* 30px */
     line-height: 2.25rem; /* 36px */
-    font-weight: bold;
   }
   .content-con {
     display: flex;
@@ -42,9 +43,8 @@ const Section = styled.section`
 `;
 
 const Title = styled.div`
-  font-weight: bolder;
+  font-family: 'NanumSquare';
+  font-weight: 800;
   font-size: 1.5rem; /* 24px */
   margin-top: 0.5rem; /* 8px */
 `;
-
-const Content = styled.div``;

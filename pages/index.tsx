@@ -73,13 +73,15 @@ const IntroDiv = styled.div`
   }
   h1 {
     font-size: 30px;
-    font-weight: bolder;
+    font-family: 'NanumSquare';
+    font-weight: 800;
     line-height: 190%;
     letter-spacing: -0.4px;
   }
   span {
     font-size: 25px;
-    font-weight: 200;
+    font-family: 'NanumSquare';
+    font-weight: 300;
     line-height: 190%;
     letter-spacing: -0.4px;
   }
@@ -89,10 +91,14 @@ const IntroDiv = styled.div`
     align-items: center;
     padding: 20px;
     h2 {
+      font-family: 'NanumSquare';
+      font-weight: 800;
       font-size: 23px;
       line-height: 190%;
     }
     a {
+      font-family: 'NanumSquare';
+      font-weight: 300;
       font-size: 18px;
       &:hover {
         text-decoration: underline;
@@ -108,12 +114,6 @@ const Divider = styled.div`
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
 `;
 
-const Button = styled.button`
-  position: relative;
-  bottom: 45px;
-  right: -150px;
-  font-size: 40px;
-`;
 const Div = styled.div`
   width: 100%;
   padding-top: 50px;
@@ -121,13 +121,13 @@ const Div = styled.div`
     position: relative;
     width: 100%;
     .title {
+      font-family: 'NanumSquare';
+      font-weight: 800;
       padding: 0;
       position: absolute;
-      font-weight: bolder;
       top: 3rem;
       color: white;
       font-size: 90px;
-      font-style: italic;
       line-height: 1;
       display: flex;
       justify-content: center;
@@ -138,8 +138,4 @@ const Div = styled.div`
       }
     }
   }
-`;
-
-const Night = styled(MdOutlineModeNight)`
-  color: white;
 `;

@@ -1,5 +1,5 @@
+import React, { useEffect } from 'react';
 import Comments from 'components/Comments';
-import Container from 'components/Container';
 import { allPosts } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
 import styled from 'styled-components';
@@ -35,7 +35,6 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   };
 
   return (
-    // <Container customMeta={customMeta}>
     <Div>
       <h1>{post!.title}</h1>
       <MDXComponent mdx={post!.body.code} />
@@ -47,7 +46,7 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
       <Comments />
     </Div>
-    // </Container>
+    //{' '}
   );
 };
 
@@ -70,6 +69,8 @@ export const getStaticProps = async ({ params }) => {
 const Div = styled.div`
   margin-top: 2.5rem;
   h1 {
+    font-family: 'NanumSquare';
+    font-weight: 800;
     font-size: 30px;
     color: rgb(3 105 161);
     padding: 20px;

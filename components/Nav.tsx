@@ -43,14 +43,16 @@ const Nav = () => {
 export default Nav;
 
 const CustomLink = styled(Link)`
+  font-family: 'NanumSquare';
+  font-weight: 800;
   font-size: 20px;
-  font-weight: bold;
   padding: 0.7rem;
 `;
 
 const CustomNav = styled.nav<{ isOpen: boolean }>`
   display: flex;
   cursor: pointer;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -68,6 +70,8 @@ const Button = styled.button<{ isOpen: boolean }>`
 const CustomSide = styled.div<{ isOpen: boolean }>`
   display: none;
   @media screen and (max-width: 768px) {
+    font-family: 'NanumSquare';
+    font-weight: 600;
     position: absolute;
     right: -20px;
 
@@ -79,7 +83,6 @@ const CustomSide = styled.div<{ isOpen: boolean }>`
     padding: 0.75rem 1rem;
 
     line-height: 1.5;
-    font-weight: 500;
 
     z-index: 100;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
