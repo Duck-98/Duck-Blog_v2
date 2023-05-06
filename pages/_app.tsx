@@ -3,11 +3,14 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from 'styles/theme';
 import { GlobalStyle } from 'styles/global-style';
+import '~/styles/font.css';
 import Container from 'components/Container';
+import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
+import { ThemeProp } from '~/types/type';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme, setTheme] = useState<ThemeProp>(darkTheme);
 
   const setMode = (mode) => {
     mode === lightTheme
@@ -31,6 +34,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     }
   }, []);
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [theme]);
 
   return (
     <ThemeProvider theme={theme}>
