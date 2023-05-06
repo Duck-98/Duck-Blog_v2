@@ -39,6 +39,11 @@ const Home = ({ posts }: Props) => {
         </IntroDiv>
         <Divider />
         <RecentPosts posts={posts} />
+        <Divider />
+        <Footer>
+          <span>Copyright © 2023 Deokgyung Na</span>
+          <span>Dev_Duck</span>
+        </Footer>
         <div>{modalOpen && <Modal setModalOpen={setModalOpen} />}</div>
       </Div>
     </>
@@ -58,6 +63,22 @@ export const getStaticProps = async () => {
 };
 
 export default Home;
+
+const Footer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 50px;
+  span {
+    font-family: 'NanumSquare';
+    font-weight: 300;
+    font-size: 18px;
+    &:first-child {
+      padding-bottom: 15px;
+    }
+  }
+`;
 
 const IntroDiv = styled.div`
   padding: 20px;

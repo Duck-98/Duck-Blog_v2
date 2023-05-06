@@ -22,7 +22,7 @@ export default RecentPosts;
 
 const Section = styled.section`
   margin-top: 2.5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
   h1 {
     font-family: 'NanumSquare';
     font-weight: 800;
