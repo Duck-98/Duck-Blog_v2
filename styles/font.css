@@ -3,26 +3,26 @@
   font-family: 'NanumSquare';
   font-style: normal;
   font-weight: 100;
-  src: url('/NanumSquareL.ttf');
+  src: url('../font/NanumSquareL.ttf');
 }
 
 @font-face {
   font-family: 'NanumSquare';
   font-style: normal;
   font-weight: 300;
-  src: url('/NanumSquareR.ttf');
+  src: url('../font/NanumSquareR.ttf');
 }
 
 @font-face {
   font-family: 'NanumSquare';
   font-style: normal;
   font-weight: 600;
-  src: url('/NanumSquareB.ttf');
+  src: url('../font/NanumSquareB.ttf');
 }
 
 @font-face {
   font-family: 'NanumSquare';
   font-style: normal;
   font-weight: 800;
-  src: url('/NanumSquareEB.ttf');
+  src: url('../font/NanumSquareEB.ttf');
 }

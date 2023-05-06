@@ -117,7 +117,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
   pre {
-    background: #1e1e1e;
+    background: #2d2d2d;
   }
   code {
     width: 100%;

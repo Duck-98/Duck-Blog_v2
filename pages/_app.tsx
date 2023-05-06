@@ -5,9 +5,10 @@ import { lightTheme, darkTheme } from 'styles/theme';
 import { GlobalStyle } from 'styles/global-style';
 import '~/styles/font.css';
 import Container from 'components/Container';
+import { ThemeProp } from '~/types/type';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
-import { ThemeProp } from '~/types/type';
+import 'prismjs/components/prism-python';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState<ThemeProp>(darkTheme);
