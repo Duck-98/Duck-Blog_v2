@@ -63,7 +63,6 @@ const Button = styled.button<{ isOpen: boolean }>`
   font-size: 40px;
   @media screen and (max-width: 768px) {
     display: flex;
-    padding-right: 15px;
   }
 `;
 
@@ -73,7 +72,7 @@ const CustomSide = styled.div<{ isOpen: boolean }>`
     font-family: 'NanumSquare';
     font-weight: 600;
     position: absolute;
-    right: -20px;
+    right: 10px;
 
     display: ${({ isOpen }) => (isOpen === false ? 'none' : 'flex')};
     flex-direction: column;
