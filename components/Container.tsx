@@ -62,7 +62,6 @@ const Main = styled.main`
 
 const Div = styled.div`
   display: flex;
-  width: 100%;
   flex-direction: column;
   align-items: center;
   padding: 0.75rem;

@@ -50,7 +50,7 @@ const Blog = ({ posts }: Props) => {
           {tagList.map((tag) => {
             return (
               <>
-                <Link href={`tag/${tag}`} passHref>
+                <Link href={`tag/${tag}`} key={tag} passHref>
                   <Styled.TagContainer>{tag}</Styled.TagContainer>
                 </Link>
               </>
