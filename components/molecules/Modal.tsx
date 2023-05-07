@@ -76,7 +76,7 @@ const Div = styled.div`
   /* translate는 본인의 크기 기준으로 작동한다. */
   position: absolute;
   top: 50%;
-  left: 52%;
+  left: 50%;
   transform: translate(-50%, -50%);
   /* 모달창 디자인 */
   background: ${({ theme }: { theme: any }) => theme.grayColor};
