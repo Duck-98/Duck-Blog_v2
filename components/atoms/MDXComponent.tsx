@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   // md 글 스타일
   h5 {
     margin: 10px 0 15px 0;
-    font-size: 15px;
+    font-size: 13px;
   }
   h4 {
     margin: 10px 0 15px 0;
@@ -140,6 +140,11 @@ const Wrapper = styled.div`
     background-color: #878787;
     border: none;
     margin: 40px 0 30px 0;
+  }
+  .blue {
+    font-family: 'NanumSquare';
+    font-weight: 300;
+    color: #61dafb;
   }
 `;
 
