@@ -57,7 +57,7 @@ const Tag = ({ posts }: Props) => {
           {tagList.map((tag) => {
             return (
               <>
-                <Link href={`${tag}`} passHref>
+                <Link href={`${tag}`} key={tag} passHref>
                   <Styled.TagContainer isActive={router.query.tag === tag ? true : false}>
                     {tag}
                   </Styled.TagContainer>
@@ -95,7 +95,7 @@ const Tag = ({ posts }: Props) => {
 export default Tag;
 
 export async function getStaticPaths() {
-  const tags = ['React', '알고리즘', 'CS', '에러해결', '클린아키텍쳐'];
+  const tags = ['JS', 'React', '알고리즘', 'CS', '에러해결', '클린아키텍쳐'];
   const paths = tags.map((tag) => ({
     params: { tag: tag },
   }));
