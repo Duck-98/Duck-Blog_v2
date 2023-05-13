@@ -95,7 +95,7 @@ const Wrapper = styled.div`
     list-style: inside;
     font-family: 'NanumSquare';
     font-weight: 300;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 26px;
     letter-spacing: -0.4px;
     color: #333333;
@@ -103,6 +103,10 @@ const Wrapper = styled.div`
     border-radius: 10px;
     list-style-position: outside;
     padding: 2rem;
+
+    @media only screen and (max-width: 390px) {
+      font-size: 0.6rem;
+    }
   }
   h2:last-of-type {
     margin-bottom: 16px;
@@ -149,7 +153,7 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled(_Image)`
-  width: 728px;
+  margin-top: 30px;
 `;
 
 // // link용 버튼

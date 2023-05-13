@@ -55,7 +55,7 @@ const Wrapper = styled.div<Pick<Props, 'autoSize'>>`
 
 const TransitionImage = styled(NextImage)`
   transition: 0.2s;
-  border-radius: 24px;
+  /* border-radius: 24px; */
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 85%;
