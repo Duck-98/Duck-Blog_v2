@@ -26,8 +26,8 @@ const Home = ({ posts }: Props) => {
           <h1>안녕하세요!</h1>
           <span>
             새로운 기술을 배우는 것을 좋아하며,
-            <br /> 주어진 일은 끈질기게 해결하려고 하는 <br />
-            프론트엔드 개발자 나덕경입니다.
+            <br /> 주어진 일을 끈질기게 해결하려고 하는 것을 <br />
+            좋아하는 프론트엔드 개발자 나덕경입니다.
           </span>
           <div className="contact">
             <div className="con">
@@ -100,7 +100,7 @@ const IntroDiv = styled.div`
     letter-spacing: -0.4px;
   }
   span {
-    font-size: 25px;
+    font-size: 1rem;
     font-family: 'NanumSquare';
     font-weight: 300;
     line-height: 190%;
