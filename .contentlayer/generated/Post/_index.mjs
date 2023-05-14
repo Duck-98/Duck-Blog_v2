@@ -19,6 +19,7 @@ import _23Mdx from './_23.mdx.json' assert { type: 'json' }
 import _24Mdx from './_24.mdx.json' assert { type: 'json' }
 import _25Mdx from './_25.mdx.json' assert { type: 'json' }
 import _26Md from './_26.md.json' assert { type: 'json' }
+import _27Md from './_27.md.json' assert { type: 'json' }
 import _3Mdx from './_3.mdx.json' assert { type: 'json' }
 import _4Mdx from './_4.mdx.json' assert { type: 'json' }
 import _5Mdx from './_5.mdx.json' assert { type: 'json' }
@@ -26,6 +27,5 @@ import _6Mdx from './_6.mdx.json' assert { type: 'json' }
 import _7Mdx from './_7.mdx.json' assert { type: 'json' }
 import _8Mdx from './_8.mdx.json' assert { type: 'json' }
 import _9Mdx from './_9.mdx.json' assert { type: 'json' }
-import _27Md from './_27.md.json' assert { type: 'json' }
 
-export const allPosts = [_1Mdx, _10Mdx, _11Mdx, _12Mdx, _13Mdx, _14Mdx, _15Mdx, _16Mdx, _17Mdx, _18Mdx, _19Mdx, _2Mdx, _20Mdx, _21Mdx, _22Mdx, _23Mdx, _24Mdx, _25Mdx, _26Md, _3Mdx, _4Mdx, _5Mdx, _6Mdx, _7Mdx, _8Mdx, _9Mdx, _27Md]
+export const allPosts = [_1Mdx, _10Mdx, _11Mdx, _12Mdx, _13Mdx, _14Mdx, _15Mdx, _16Mdx, _17Mdx, _18Mdx, _19Mdx, _2Mdx, _20Mdx, _21Mdx, _22Mdx, _23Mdx, _24Mdx, _25Mdx, _26Md, _27Md, _3Mdx, _4Mdx, _5Mdx, _6Mdx, _7Mdx, _8Mdx, _9Mdx]

@@ -10,6 +10,13 @@ export const Div = styled.div`
   .select {
     padding-left: 10px;
   }
+  select {
+    width: 100px;
+    height: 25px;
+    font-family: 'NanumSquare';
+    font-weight: 600;
+    font-size: 15px;
+  }
 `;
 
 export const BlogContainer = styled.div`
