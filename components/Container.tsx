@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { WiDaySunny } from 'react-icons/wi';
 import { Night } from '~/styles/blog.styles';
 import { lightTheme } from '~/styles/theme';
+import HeadMeta from './atoms/HeadMetaTag';
 
 const Container = (props) => {
   const meta = {
@@ -21,13 +22,17 @@ const Container = (props) => {
   return (
     <>
       <Div>
-        <Head>
+        {/* <Head>
           <title>{meta.title}</title>
-          <title>{meta.title}</title>
+          <meta name="title" content={meta.title} />
           <meta content={meta.description} name="description" />
+          <meta property="og:type" content="website" />
           <meta property="og:site_name" content={meta.author} />
           <meta property="og:image" content="https://duck-blog-v2-duck-98.vercel.app/dev.jpg" />
-        </Head>
+          <meta property="og:title" content={meta.title} />
+          <meta property="og:description" content={meta.description} />
+        </Head> */}
+        <HeadMeta title={meta.title} description={meta.description} author={meta.author} />
         <Header>
           <div className="img-con">
             <Link href="/">

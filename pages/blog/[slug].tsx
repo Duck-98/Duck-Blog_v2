@@ -7,6 +7,7 @@ import MDXComponent from 'components/atoms/MDXComponent';
 import share from '~/utils/share';
 import { useRouter } from 'next/router';
 import { FiShare } from 'react-icons/fi';
+import HeadMeta from '~/components/atoms/HeadMetaTag';
 
 const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   // const MDXComponent = useMDXComponent(post.body.code);
@@ -16,6 +17,7 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
     title: post.title,
     description: post.description,
     date: new Date(post.date).toISOString(),
+    author: 'DevDuck',
   };
 
   const data = {
@@ -36,6 +38,11 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   return (
     <Div>
+      <HeadMeta
+        title={customMeta.title}
+        description={customMeta.description}
+        author={customMeta.author}
+      />
       <h1>{post!.title}</h1>
       <MDXComponent mdx={post!.body.code} />
       <div className="btn-con">
@@ -43,10 +50,8 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <Icon /> 공유
         </Button>
       </div>
-
       <Comments />
     </Div>
-    //{' '}
   );
 };
 
