@@ -58,7 +58,7 @@ const TransitionImage = styled(NextImage)`
   /* border-radius: 24px; */
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 85%;
+    height: 100%;
   }
 `;
 

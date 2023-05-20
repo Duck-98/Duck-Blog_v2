@@ -70,7 +70,7 @@ const Wrapper = styled.div`
     font-family: 'NanumSquare';
     font-weight: 300;
   }
-  ul:last-child {
+  /* ul:last-child {
     font-family: 'NanumSquare';
     font-weight: 300;
     list-style: none;
@@ -78,7 +78,7 @@ const Wrapper = styled.div`
     line-height: 190%;
     letter-spacing: -0.4px;
     margin: 0 0 30px 0;
-  }
+  } */
   strong {
     font-family: 'NanumSquare';
     font-weight: 800;
