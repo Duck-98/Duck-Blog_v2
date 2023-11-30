@@ -18,6 +18,7 @@ export default function HeadMeta({ title, description, author, children }: HeadM
       <meta property="og:image" content="https://duck-blog-v2-duck-98.vercel.app/dev.jpg" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
+      <meta name="robots" content="index, follow" />
       {children}
     </Head>
   );
