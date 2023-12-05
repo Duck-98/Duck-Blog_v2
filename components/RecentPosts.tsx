@@ -40,6 +40,9 @@ const Section = styled.section`
   .link {
     margin-top: 1.25rem;
   }
+  .content {
+    margin-top: 0.5rem;
+  }
 `;
 
 const Title = styled.div`
