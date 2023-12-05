@@ -44,7 +44,7 @@ const Home = ({ posts }: Props) => {
           <span>Copyright © 2023 Deokgyung Na</span>
           <span>Dev_Duck</span>
         </Footer>
-        <div>{modalOpen && <Modal setModalOpen={setModalOpen} />}</div>
+        {/* <div>{modalOpen && <Modal setModalOpen={setModalOpen} />}</div> */}
       </Div>
     </>
   );
