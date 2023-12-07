@@ -8,6 +8,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { allPosts } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
 import Modal from 'components/molecules/Modal';
+import FloatingIcons from '~/components/FloatingIcon';
 
 interface Props {
   posts: InferGetStaticPropsType<typeof getStaticProps>[];
@@ -18,6 +19,7 @@ const Home = ({ posts }: Props) => {
   return (
     <>
       <Div>
+        <FloatingIcons />
         <div className="img-con">
           <Image src="/blog.jpg" alt="blog-img" autoSize={false} width={768} height={600} />
           <span className="title">{metadata.title}</span>
@@ -136,6 +138,7 @@ const Divider = styled.div`
 `;
 
 const Div = styled.div`
+  /* position: relative; */
   width: 100%;
   padding-top: 50px;
   .img-con {
