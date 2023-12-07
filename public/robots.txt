@@ -11,5 +11,4 @@ Host: https://duck-blog-v2-duck-98.vercel.app/
 
 # Sitemaps
 Sitemap: https://duck-blog-v2-duck-98.vercel.app/sitemap.xml
-Sitemap: https://duck-blog-v2-duck-98.vercel.app/server-sitemap.xml
 Sitemap: https://duck-blog-v2-duck-98.vercel.app/sitemap-0.xml
