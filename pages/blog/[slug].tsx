@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import MDXComponent from 'components/atoms/MDXComponent';
 import share from '~/utils/share';
 import { useRouter } from 'next/router';
-import { FiShare } from 'react-icons/fi';
+import { FaShareAlt } from 'react-icons/fa';
 import HeadMeta from '~/components/atoms/HeadMetaTag';
 import Link from 'next/link';
 import ScrollProgressBar from '~/components/atoms/ScrollProgressBar';
@@ -34,7 +34,6 @@ const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof g
 
   const handleShare = async () => {
     const result = await share(data);
-    console.log(result);
     if (result === 'copiedToClipboard') {
       alert('링크를 클립보드에 복사했습니다.');
     } else if (result === 'failed') {
@@ -54,7 +53,7 @@ const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof g
       <MDXComponent mdx={post!.body.code} />
       <div className="btn-con">
         <Button onClick={handleShare}>
-          <Icon /> 공유
+          <Icon />
         </Button>
       </div>
       <Comments />
@@ -123,21 +122,22 @@ const Div = styled.div`
   }
 `;
 
-const Icon = styled(FiShare)`
-  width: 3rem;
-  height: 3rem;
+const Icon = styled(FaShareAlt)`
+  width: 1.2rem;
+  height: 1.2rem;
 `;
 
 const Button = styled.button`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: ${({ theme }: { theme: any }) => theme.textColor};
   font-size: 1rem;
-  width: 4rem;
-  height: 4rem;
   border: none;
   cursor: pointer;
+  padding: 0.5rem;
+  transition: background-color 0.3s; /* 효과가 부드럽게 적용되도록 트랜지션 추가 */
+
+  &:active {
+    background-color: lightgray; /* 클릭 시 배경색을 변경할 적절한 색상으로 설정 */
+  }
 `;
 
 const LinkButton = styled(Link)`
