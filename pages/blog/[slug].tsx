@@ -141,6 +141,8 @@ const Button = styled.button`
 `;
 
 const LinkButton = styled(Link)`
+  font-family: 'NanumSquare';
+  font-weight: 600;
   font-size: 1rem;
   background-color: ${({ theme }: { theme: any }) => theme.grayColor};
   display: flex;
