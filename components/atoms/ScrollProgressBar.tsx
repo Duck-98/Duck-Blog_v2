@@ -5,17 +5,23 @@ const ScrollProgressBar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    let animationFrameId;
+
     const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollTop = window.scrollY;
-      const progress = (scrollTop / scrollHeight) * 100;
-      setScrollProgress(progress);
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(() => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollTop = window.scrollY;
+        const progress = (scrollTop / scrollHeight) * 100;
+        setScrollProgress(progress);
+      });
     };
 
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -29,7 +35,7 @@ const ProgressBar = styled.div`
   top: 0;
   left: 0;
   z-index: 1000;
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
 `;
 
 export default ScrollProgressBar;
