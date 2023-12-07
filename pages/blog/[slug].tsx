@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Comments from 'components/Comments';
 import { allPosts } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
@@ -61,14 +61,14 @@ const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof g
       <div className="navigation">
         {prevPost && (
           <LinkButton href={`/blog/${prevPost._raw.flattenedPath}`}>
-            <span>&lt; 이전 포스트</span>
-            {/* {prevPost.title} */}
+            <span className="subject">이전 포스트</span>
+            <div>{prevPost.title}</div>
           </LinkButton>
         )}
         {nextPost && (
           <LinkButton href={`/blog/${nextPost._raw.flattenedPath}`}>
-            <span>다음 포스트 &gt;</span>
-            {/* {nextPost.title}  */}
+            <span className="subject">다음 포스트</span>
+            <div>{nextPost.title}</div>
           </LinkButton>
         )}
       </div>
@@ -116,9 +116,10 @@ const Div = styled.div`
     justify-content: flex-end;
   }
   .navigation {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -140,9 +141,26 @@ const Button = styled.button`
 `;
 
 const LinkButton = styled(Link)`
-  color: ${({ theme }: { theme: any }) => theme.textColor};
   font-size: 1rem;
-  cursor: pointer;
+  background-color: ${({ theme }: { theme: any }) => theme.grayColor};
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  padding: 1rem;
+  div {
+    font-size: 1rem;
+    line-height: 150%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .subject {
+    color: rgb(142, 143, 151);
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export default Post;

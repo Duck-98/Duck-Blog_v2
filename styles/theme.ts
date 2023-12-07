@@ -3,7 +3,7 @@ export const lightTheme = {
   textColor: '#000000',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
-  grayColor: '#FBFCFD',
+  grayColor: '#f6f8fa',
 };
 
 export const darkTheme = {
