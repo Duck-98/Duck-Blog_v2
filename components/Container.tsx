@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import React from 'react';
 import Nav from './Nav';
 import styled from 'styled-components';
@@ -6,10 +5,8 @@ import metadata from '../data/metadata';
 // import Image from './atoms/Image';
 import Image from 'next/image';
 import Link from 'next/link';
-import { WiDaySunny } from 'react-icons/wi';
-import { Night } from '~/styles/blog.styles';
-import { lightTheme } from '~/styles/theme';
 import HeadMeta from './atoms/HeadMetaTag';
+import ThemeToggle from './atoms/ThemeToggle';
 
 const Container = (props) => {
   const meta = {
@@ -22,16 +19,6 @@ const Container = (props) => {
   return (
     <>
       <Div>
-        {/* <Head>
-          <title>{meta.title}</title>
-          <meta name="title" content={meta.title} />
-          <meta content={meta.description} name="description" />
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content={meta.author} />
-          <meta property="og:image" content="https://duck-blog-v2-duck-98.vercel.app/dev.jpg" />
-          <meta property="og:title" content={meta.title} />
-          <meta property="og:description" content={meta.description} />
-        </Head> */}
         <HeadMeta title={meta.title} description={meta.description} author={meta.author} />
         <Header>
           <div className="img-con">
@@ -39,17 +26,8 @@ const Container = (props) => {
               <Image className="img" src="/home.jpg" alt="blog-img" width={50} height={50} />
             </Link>
             <span className="title">{metadata.title}</span>
-            {props.theme === lightTheme ? (
-              <Button onClick={props.toggleTheme}>
-                <WiDaySunny />
-              </Button>
-            ) : (
-              <Button onClick={props.toggleTheme}>
-                <Night />
-              </Button>
-            )}
+            <ThemeToggle toggleTheme={props.toggleTheme} theme={props.theme} />
           </div>
-
           <Nav />
         </Header>
         <Main>{props.children}</Main>
