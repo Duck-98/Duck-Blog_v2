@@ -8,9 +8,14 @@ import share from '~/utils/share';
 import { useRouter } from 'next/router';
 import { FiShare } from 'react-icons/fi';
 import HeadMeta from '~/components/atoms/HeadMetaTag';
+import Link from 'next/link';
 
-const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof getStaticProps>) => {
   // const MDXComponent = useMDXComponent(post.body.code);
+
+  const nextPost = allPosts[currentIndex - 1] || null;
+  const prevPost = allPosts[currentIndex + 1] || null;
+
   const router = useRouter();
 
   const customMeta = {
@@ -51,6 +56,20 @@ const Post = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </Button>
       </div>
       <Comments />
+      <div className="navigation">
+        {prevPost && (
+          <LinkButton href={`/blog/${prevPost._raw.flattenedPath}`}>
+            <span>&lt; 이전 포스트</span>
+            {/* {prevPost.title} */}
+          </LinkButton>
+        )}
+        {nextPost && (
+          <LinkButton href={`/blog/${nextPost._raw.flattenedPath}`}>
+            <span>다음 포스트 &gt;</span>
+            {/* {nextPost.title}  */}
+          </LinkButton>
+        )}
+      </div>
     </Div>
   );
 };
@@ -63,10 +82,20 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
+  const sortedPosts = allPosts.sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA; // 날짜 내림차순 정렬
+  });
+
   const post = allPosts.find((p) => p._raw.flattenedPath === params.slug);
+  const currentIndex = sortedPosts.findIndex((p) => p._raw.flattenedPath === params.slug);
+
   return {
     props: {
       post,
+      allPosts,
+      currentIndex,
     },
   };
 };
@@ -84,6 +113,11 @@ const Div = styled.div`
     display: flex;
     justify-content: flex-end;
   }
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
 `;
 
 const Icon = styled(FiShare)`
@@ -100,6 +134,12 @@ const Button = styled.button`
   width: 4rem;
   height: 4rem;
   border: none;
+  cursor: pointer;
+`;
+
+const LinkButton = styled(Link)`
+  color: ${({ theme }: { theme: any }) => theme.textColor};
+  font-size: 1rem;
   cursor: pointer;
 `;
 
