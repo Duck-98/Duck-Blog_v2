@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { FiShare } from 'react-icons/fi';
 import HeadMeta from '~/components/atoms/HeadMetaTag';
 import Link from 'next/link';
+import ScrollProgressBar from '~/components/atoms/ScrollProgressBar';
 
 const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof getStaticProps>) => {
   // const MDXComponent = useMDXComponent(post.body.code);
@@ -43,6 +44,7 @@ const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof g
 
   return (
     <Div>
+      <ScrollProgressBar />
       <HeadMeta
         title={customMeta.title}
         description={customMeta.description}
