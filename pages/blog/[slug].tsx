@@ -10,6 +10,7 @@ import { FaShareAlt } from 'react-icons/fa';
 import HeadMeta from '~/components/atoms/HeadMetaTag';
 import Link from 'next/link';
 import ScrollProgressBar from '~/components/atoms/ScrollProgressBar';
+import { toast } from 'react-toastify';
 
 const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof getStaticProps>) => {
   // const MDXComponent = useMDXComponent(post.body.code);
@@ -35,9 +36,9 @@ const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof g
   const handleShare = async () => {
     const result = await share(data);
     if (result === 'copiedToClipboard') {
-      alert('링크를 클립보드에 복사했습니다.');
+      toast.success('링크를 클립보드에 복사했습니다.');
     } else if (result === 'failed') {
-      alert('공유하기가 지원되지 않는 환경입니다.');
+      toast.error('공유하기가 지원되지 않는 환경입니다.');
     }
   };
 
