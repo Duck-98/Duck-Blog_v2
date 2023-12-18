@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
           />
           <meta name="naver-site-verification" content="200c87f231960d7ce0142f8c97120f1db44a123e" />
 
-          <meta name="robots" content="all"></meta>
+          <meta name="robots" content="index, follow" />
         </Head>
         <body>
           <div id="root">

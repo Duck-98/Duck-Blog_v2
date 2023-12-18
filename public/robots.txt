@@ -1,9 +1,5 @@
-# *
 User-agent: *
 
-# *
-User-agent: *
-Allow: /
 
 # Host
 Host: https://duck-blog-v2-duck-98.vercel.app/
