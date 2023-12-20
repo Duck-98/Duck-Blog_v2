@@ -58,6 +58,7 @@ const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof g
         </Button>
       </div>
       <Comments />
+      <Divider />
       <div className="navigation">
         {prevPost && (
           <LinkButton href={`/blog/${prevPost._raw.flattenedPath}`}>
@@ -66,7 +67,12 @@ const Post = ({ post, allPosts, currentIndex }: InferGetStaticPropsType<typeof g
           </LinkButton>
         )}
         {nextPost && (
-          <LinkButton href={`/blog/${nextPost._raw.flattenedPath}`}>
+          <LinkButton
+            style={{
+              alignItems: 'flex-end',
+            }}
+            href={`/blog/${nextPost._raw.flattenedPath}`}
+          >
             <span className="subject">다음 포스트</span>
             <div>{nextPost.title}</div>
           </LinkButton>
@@ -164,6 +170,14 @@ const LinkButton = styled(Link)`
     color: rgb(142, 143, 151);
     margin-bottom: 0.5rem;
   }
+`;
+
+const Divider = styled.div`
+  margin-top: 1rem;
+  background: ${({ theme }: { theme: any }) => theme.grayColor};
+  width: 100%;
+  height: 3px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
 `;
 
 export default Post;
