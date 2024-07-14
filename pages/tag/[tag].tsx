@@ -95,7 +95,7 @@ const Tag = ({ posts }: Props) => {
 export default Tag;
 
 export async function getStaticPaths() {
-  const tags = ['JS', 'React', '알고리즘', 'CS', '에러해결', '클린아키텍쳐'];
+  const tags = ['JS', 'React', '알고리즘', 'CS', '에러해결', '클린아키텍쳐', '기타', 'TDD'];
   const paths = tags.map((tag) => ({
     params: { tag: tag },
   }));

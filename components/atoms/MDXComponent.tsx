@@ -150,6 +150,42 @@ const Wrapper = styled.div`
     font-weight: 300;
     color: #61dafb;
   }
+
+  blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 3px solid #ccc;
+    margin: 1.5em 0;
+    padding: 1em 1.5em;
+    background-color: #f9f9f9;
+    position: relative;
+    quotes: '“' '”' '‘' '’';
+  }
+
+  blockquote::before {
+    content: open-quote;
+    font-size: 2em;
+    color: #ccc;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+
+  blockquote::after {
+    content: close-quote;
+    font-size: 2em;
+    color: #ccc;
+    position: absolute;
+    right: 10px;
+    bottom: -10px;
+  }
+
+  blockquote footer {
+    text-align: right;
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 10px;
+  }
 `;
 
 const Image = styled(_Image)`
